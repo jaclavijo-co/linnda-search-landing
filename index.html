@@ -42,10 +42,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://linnda.co/#organization",
+  "@id": "https://www.linnda.co/#organization",
   "name": "Linnda",
   "alternateName": "Linnda Search",
-  "url": "https://linnda.co",
+  "url": "https://www.linnda.co",
   "logo": "https://www.linnda.co/linnda-logo.png",
   "description": "Plataforma de IA para optimización de marketing. Linnda Search es la especialización en Google Ads para marcas de LatAm.",
   "foundingDate": "2022",
@@ -79,7 +79,7 @@
   "@type": "Service",
   "@id": "https://search.linnda.co/#service",
   "name": "Linnda Search — Audit y Optimización de Google Ads",
-  "provider": { "@id": "https://linnda.co/#organization" },
+  "provider": { "@id": "https://www.linnda.co/#organization" },
   "areaServed": [
     { "@type": "Country", "name": "Mexico" },
     { "@type": "Country", "name": "Colombia" },
@@ -200,7 +200,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
   /* =========================================================
@@ -245,8 +245,11 @@
     --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-2xl: 24px;
 
     /* Typography scales — mobile first */
-    --fs-hero: clamp(40px, 10vw, 104px);
-    --fs-h2: clamp(32px, 6.5vw, 64px);
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+    --fs-hero: clamp(44px, 10vw, 108px);
+    --fs-h2: clamp(34px, 6.5vw, 64px);
     --fs-h3: clamp(22px, 4vw, 32px);
     --fs-body: 15px;
     --fs-sub: 17px;
@@ -267,10 +270,12 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-weight: 400;
     line-height: 1.5;
     font-size: var(--fs-body);
+    letter-spacing: -0.005em;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -354,13 +359,14 @@
     padding: 14px 0;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(10, 10, 11, 0.78);
+    background: rgba(10, 10, 11, 0.72);
     border-bottom: 1px solid transparent;
-    transition: border-color 0.3s, padding 0.3s;
+    transition: border-color 0.3s, padding 0.3s, background 0.3s;
   }
   nav.scrolled {
     border-bottom-color: var(--border);
     padding: 10px 0;
+    background: rgba(10, 10, 11, 0.92);
   }
   .nav-inner {
     display: flex;
@@ -369,8 +375,8 @@
     gap: 16px;
   }
   .logo {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 20px;
     letter-spacing: -0.02em;
     display: flex;
@@ -391,9 +397,9 @@
     justify-content: center;
     font-size: 14px;
     color: #00170a;
-    font-weight: 800;
+    font-weight: 400;
     box-shadow: 0 0 0 1px rgba(0, 177, 64, 0.3), 0 4px 12px rgba(0, 177, 64, 0.2);
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
   }
   .logo-sub {
     font-family: 'JetBrains Mono', monospace;
@@ -572,7 +578,7 @@
   }
 
   h1.hero-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-weight: 400;
     font-size: var(--fs-hero);
     line-height: 0.96;
@@ -584,7 +590,7 @@
   }
   h1.hero-title em {
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--linnda-verde);
   }
   h1.hero-title .underline {
@@ -654,9 +660,9 @@
     gap: 4px;
   }
   .hero-meta-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--text);
     letter-spacing: -0.02em;
     line-height: 1;
@@ -756,9 +762,9 @@
   }
 
   .hero-media-caption {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 4px;
     letter-spacing: -0.01em;
   }
@@ -834,8 +840,8 @@
     .inheritance-stat { align-items: flex-start; }
   }
   .inheritance-stat-value {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 20px;
     color: var(--text);
     letter-spacing: -0.01em;
@@ -1016,8 +1022,8 @@
   @media (min-width: 900px) { .founding-number-wrap { align-items: flex-start; } }
 
   .founding-number {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: clamp(80px, 16vw, 160px);
     line-height: 0.82;
     letter-spacing: -0.04em;
@@ -1100,8 +1106,8 @@
   }
 
   .founding-copy h3 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 24px;
     letter-spacing: -0.02em;
     margin-bottom: 14px;
@@ -1204,7 +1210,7 @@
   }
 
   h2 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-weight: 400;
     font-size: var(--fs-h2);
     line-height: 1.02;
@@ -1212,7 +1218,7 @@
     margin-bottom: 20px;
     max-width: 800px;
   }
-  h2 em { font-style: italic; font-weight: 300; }
+  h2 em { font-style: italic; font-weight: 400; color: var(--text); opacity: 0.85; }
 
   .section-sub {
     font-size: var(--fs-sub);
@@ -1260,7 +1266,7 @@
     position: absolute;
     top: -20px;
     left: 24px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 72px;
     line-height: 1;
     color: var(--linnda-verde);
@@ -1276,10 +1282,10 @@
     font-weight: 500;
   }
   .persona-text {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 22px;
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--text);
     line-height: 1.35;
     letter-spacing: -0.01em;
@@ -1323,7 +1329,7 @@
     letter-spacing: 0.1em;
   }
   .problem-cell-big {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-weight: 400;
     font-size: 48px;
     line-height: 1;
@@ -1376,9 +1382,9 @@
     align-items: baseline;
   }
   .calc-slider-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 26px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--linnda-verde);
     letter-spacing: -0.01em;
   }
@@ -1471,8 +1477,8 @@
     margin-bottom: 8px;
   }
   .calc-result-value {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 56px;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -1560,9 +1566,9 @@
     text-transform: uppercase;
   }
   .how-step-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.02em;
     margin-bottom: 10px;
     line-height: 1.15;
@@ -1669,16 +1675,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 20px;
     color: var(--linnda-verde);
     flex-shrink: 0;
   }
 
   .case-card-v2-name {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 18px;
     letter-spacing: -0.01em;
     line-height: 1.1;
@@ -1707,8 +1713,8 @@
   }
 
   .case-card-v2-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 22px;
     line-height: 1.15;
     letter-spacing: -0.02em;
@@ -1760,8 +1766,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 14px;
     flex-wrap: wrap;
   }
@@ -1788,7 +1794,7 @@
   .case-card-v2-delta {
     display: flex;
     gap: 10px;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: var(--text-2);
     line-height: 1.55;
@@ -1819,8 +1825,8 @@
   }
 
   .cases-summary-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 24px;
     letter-spacing: -0.02em;
     margin-bottom: 24px;
@@ -1887,8 +1893,8 @@
   }
 
   .cases-summary-value-big {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 18px;
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -1928,6 +1934,338 @@
     color: var(--text);
     font-weight: 600;
   }
+
+  /* =========================================================
+     COMPETITIVE COMPARISON · vs SaaS famosos + agencias
+     ========================================================= */
+  .competitive {
+    border-top: 1px solid var(--border);
+  }
+
+  /* Logo strip */
+  .competitive-logos {
+    margin-top: 40px;
+    margin-bottom: 48px;
+    padding: 24px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+  }
+  .competitive-logos-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .competitive-logos-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  @media (min-width: 600px) {
+    .competitive-logos-row { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .competitive-logos-row { grid-template-columns: repeat(6, 1fr); }
+  }
+  .competitive-logo {
+    padding: 14px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .competitive-logo:hover {
+    border-color: var(--border-strong);
+  }
+  .competitive-logo-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-2);
+    letter-spacing: -0.01em;
+  }
+  .competitive-logo-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-4);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .competitive-logo-agency {
+    background: rgba(245, 158, 11, 0.04);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .competitive-logo-agency .competitive-logo-text {
+    color: var(--linnda-yellow);
+  }
+
+  /* Matrix table */
+  .competitive-matrix {
+    margin-bottom: 48px;
+  }
+  .competitive-matrix-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--bg-2);
+  }
+  .competitive-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .competitive-table thead {
+    background: var(--bg-3);
+  }
+  .competitive-table th {
+    padding: 16px 14px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    border-bottom: 1px solid var(--border-strong);
+    vertical-align: top;
+  }
+  @media (min-width: 768px) {
+    .competitive-table th { padding: 20px 18px; font-size: 12px; }
+  }
+  .competitive-table th.col-us {
+    color: var(--linnda-verde);
+    background: rgba(0, 177, 64, 0.05);
+    border-bottom-color: var(--linnda-verde);
+  }
+  .col-sub {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-3);
+    letter-spacing: 0.02em;
+    text-transform: none;
+    margin-top: 4px;
+  }
+  .col-sub-us {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--linnda-verde);
+    opacity: 0.8;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    margin-top: 4px;
+  }
+
+  .competitive-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .competitive-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  .competitive-table tbody tr:hover {
+    background: rgba(255,255,255,0.02);
+  }
+  .competitive-table td {
+    padding: 14px 14px;
+    vertical-align: middle;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  @media (min-width: 768px) {
+    .competitive-table td { padding: 16px 18px; font-size: 14px; }
+  }
+  .cap-name {
+    color: var(--text);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    min-width: 240px;
+  }
+  .cell-no { color: var(--text-3); }
+  .cell-maybe { color: var(--linnda-yellow); }
+  .cell-yes { color: var(--linnda-verde); font-weight: 500; }
+  .cell-yes-big { color: var(--linnda-verde); font-weight: 600; background: rgba(0,177,64,0.05); }
+  .cell-meta { color: var(--text-2); }
+  .cell-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 6px;
+    border-radius: 3px;
+  }
+  .cell-no .cell-icon { background: rgba(255,255,255,0.05); color: var(--text-4); }
+  .cell-maybe .cell-icon { background: rgba(245,158,11,0.12); color: var(--linnda-yellow); }
+  .cell-yes .cell-icon { background: rgba(0,177,64,0.12); color: var(--linnda-verde); }
+
+  /* Table "us" column highlighted */
+  .competitive-table td:last-child {
+    background: rgba(0, 177, 64, 0.02);
+  }
+
+  /* Category cards */
+  .competitive-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  @media (min-width: 900px) {
+    .competitive-cards { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .competitive-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .competitive-card { padding: 32px 28px; }
+  }
+  .competitive-card-us {
+    background: linear-gradient(180deg, rgba(0, 177, 64, 0.06) 0%, var(--bg-2) 100%);
+    border-color: var(--linnda-verde);
+  }
+  .competitive-card:hover {
+    transform: translateY(-2px);
+  }
+  .competitive-card-saas:hover { border-color: var(--border-strong); }
+  .competitive-card-agency:hover { border-color: rgba(245, 158, 11, 0.3); }
+  .competitive-card-us:hover { border-color: var(--linnda-verde-glow); }
+
+  .competitive-card-icon {
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .competitive-card-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--linnda-verde) 0%, #00c84b 100%);
+    color: #00170a;
+    border-radius: var(--r-sm);
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    box-shadow: 0 0 0 1px rgba(0, 177, 64, 0.3), 0 4px 12px rgba(0, 177, 64, 0.2);
+  }
+
+  .competitive-card-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .competitive-card-us .competitive-card-title {
+    color: var(--linnda-verde);
+  }
+
+  .competitive-card-examples {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .competitive-card-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+  .competitive-card-desc em {
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .competitive-card-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .competitive-card-bullets li {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.5;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .competitive-card-saas .competitive-card-bullets li::before {
+    content: '✕';
+    color: var(--text-4);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .competitive-card-agency .competitive-card-bullets li::before {
+    content: '◐';
+    color: var(--linnda-yellow);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .competitive-card-us .competitive-card-bullets li::before {
+    content: '✓';
+    color: var(--linnda-verde);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .competitive-footnote {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    padding: 16px 20px;
+    background: var(--bg-2);
+    border-left: 2px solid var(--linnda-verde);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  }
+  .competitive-footnote strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .competitive-footnote a {
+    color: var(--linnda-verde);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--linnda-verde);
+    transition: opacity 0.2s;
+  }
+  .competitive-footnote a:hover { opacity: 0.8; }
 
   /* =========================================================
      TEAM SECTION (añadir caras, subir confianza)
@@ -1991,16 +2329,16 @@
     justify-content: center;
     font-size: 28px;
     color: #00170a;
-    font-weight: 800;
+    font-weight: 400;
     box-shadow: 0 0 0 1px rgba(0, 177, 64, 0.3), 0 8px 24px rgba(0, 177, 64, 0.25);
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     flex-shrink: 0;
   }
 
   .backed-card-name {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1;
     margin-bottom: 4px;
@@ -2045,7 +2383,7 @@
   }
 
   .backed-stat-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-weight: 400;
     font-size: 32px;
     line-height: 1;
@@ -2128,9 +2466,9 @@
     align-items: start;
   }
   .backed-award-year {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--linnda-verde);
     letter-spacing: -0.01em;
     line-height: 1.1;
@@ -2194,7 +2532,7 @@
   }
 
   .backed-shared-title {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 14px;
     color: var(--text);
@@ -2286,7 +2624,7 @@
   }
 
   .pricing-switcher-value {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-weight: 400;
     font-size: 40px;
     line-height: 1;
@@ -2328,11 +2666,11 @@
     .pricing-switcher-divider { padding: 0 4px; }
   }
   .pricing-switcher-arrow {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 28px;
     color: var(--text-3);
     line-height: 1;
-    font-weight: 300;
+    font-weight: 400;
     display: inline-block;
     transform: rotate(90deg);
   }
@@ -2400,9 +2738,9 @@
     letter-spacing: 0.1em;
   }
   .plan-name {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.01em;
   }
   .plan-header { display: flex; flex-direction: column; gap: 4px; }
@@ -2424,7 +2762,7 @@
     align-items: baseline;
     gap: 4px;
     color: var(--text-4);
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-weight: 400;
     font-size: 20px;
     text-decoration: line-through;
@@ -2480,8 +2818,8 @@
   }
 
   .plan-price-value {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 52px;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -2522,8 +2860,8 @@
     transform: rotate(-2deg) scale(1.05);
   }
   .plan-savings-badge .savings-pct {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 20px;
     line-height: 1;
     letter-spacing: -0.02em;
@@ -2634,8 +2972,8 @@
   }
 
   .pricing-savings-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
     font-size: 17px;
     color: var(--text);
     line-height: 1.3;
@@ -2688,9 +3026,9 @@
     user-select: none;
   }
   .faq-q-text {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 17px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.3;
   }
@@ -2809,9 +3147,9 @@
   .apply-card-icon.wa { background: rgba(37, 211, 102, 0.1); color: var(--wa); }
   .apply-card-icon.form { background: rgba(0, 177, 64, 0.1); color: var(--linnda-verde); }
   .apply-card-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.2;
     margin-bottom: 4px;
@@ -2908,7 +3246,7 @@
   }
   .form-success.show { display: block; }
   .form-success h3 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Instrument Serif', Georgia, serif;
     font-size: 20px;
     margin-bottom: 6px;
     color: var(--linnda-verde);
@@ -3032,7 +3370,7 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
   .wa-float:hover .wa-float-tooltip { opacity: 1; }
@@ -3099,7 +3437,7 @@
     min-width: 0;
   }
   .urgency-toast-title {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 13px;
     color: var(--text);
@@ -3123,7 +3461,7 @@
     background: var(--linnda-verde);
     color: #00170a;
     border-radius: var(--r-sm);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 12px;
     text-decoration: none;
@@ -3264,7 +3602,7 @@
 <!-- Brand strip (herencia Linnda) -->
 <div class="brand-strip">
   <span class="dot"></span>
-  Un producto de <a href="https://linnda.co" target="_blank" rel="noopener">Linnda</a> · Top 100 Startups Colombia · Forbes 2023 & 2025
+  Un producto de <a href="https://www.linnda.co" target="_blank" rel="noopener">Linnda</a> · Top 100 Startups Colombia · Forbes 2023 & 2025
 </div>
 
 <!-- NAV -->
@@ -3277,7 +3615,8 @@
     <div class="nav-links">
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#calcula">Calcula tu waste</a>
-      <a href="#caso">Caso real</a>
+      <a href="#caso">Casos</a>
+      <a href="#comparativa">Vs mercado</a>
       <a href="#precios">Precios</a>
       <a href="#aplicar" class="btn btn-primary">Aplicar al piloto</a>
     </div>
@@ -3551,7 +3890,7 @@
 <section class="how" id="como-funciona">
   <div class="container">
     <div class="section-label">Cómo funciona</div>
-    <h2 class="reveal">Tres pasos. <em>Sin consultor de traje.</em></h2>
+    <h2 class="reveal">Tres pasos para saber <em>qué está mal</em> en tu cuenta.</h2>
     <p class="section-sub reveal">
       Conectas tu cuenta, nuestro sistema analiza, tú recibes un reporte accionable — y si tiene sentido, seguimos juntos.
     </p>
@@ -3847,6 +4186,189 @@
   </div>
 </section>
 
+<!-- COMPETITIVE COMPARISON · vs SaaS famosos + agencias -->
+<section class="competitive" id="comparativa">
+  <div class="container">
+    <div class="section-label">Categoría nueva</div>
+    <h2 class="reveal">Las herramientas que <em>ya conoces</em> no hacen lo que nosotros hacemos.</h2>
+    <p class="section-sub reveal">
+      No competimos contra Optmyzr ni contra tu agencia — resolvemos un problema distinto.
+      Esto es exactamente qué puede y no puede hacer cada categoría.
+    </p>
+
+    <!-- Logo strip: "Probablemente ya usas o consideraste" -->
+    <div class="competitive-logos reveal">
+      <div class="competitive-logos-label">Probablemente ya evaluaste o usas alguno:</div>
+      <div class="competitive-logos-row">
+        <div class="competitive-logo">
+          <span class="competitive-logo-text">Optmyzr</span>
+          <span class="competitive-logo-sub">SaaS reglas</span>
+        </div>
+        <div class="competitive-logo">
+          <span class="competitive-logo-text">Adalysis</span>
+          <span class="competitive-logo-sub">SaaS alertas</span>
+        </div>
+        <div class="competitive-logo">
+          <span class="competitive-logo-text">WordStream</span>
+          <span class="competitive-logo-sub">SaaS PMD</span>
+        </div>
+        <div class="competitive-logo">
+          <span class="competitive-logo-text">Opteo</span>
+          <span class="competitive-logo-sub">SaaS monitor</span>
+        </div>
+        <div class="competitive-logo">
+          <span class="competitive-logo-text">SEMrush</span>
+          <span class="competitive-logo-sub">SEO + Ads</span>
+        </div>
+        <div class="competitive-logo competitive-logo-agency">
+          <span class="competitive-logo-text">Tu agencia</span>
+          <span class="competitive-logo-sub">Humano senior</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Matrix comparison -->
+    <div class="competitive-matrix reveal">
+      <div class="competitive-matrix-scroll">
+        <table class="competitive-table">
+          <thead>
+            <tr>
+              <th class="col-capability">Capacidad</th>
+              <th class="col-saas">SaaS de reglas<br><span class="col-sub">(Optmyzr, Adalysis, WordStream, Opteo)</span></th>
+              <th class="col-agency">Agencia tradicional<br><span class="col-sub">(consultora o in-house)</span></th>
+              <th class="col-us">Linnda Search<br><span class="col-sub-us">IA + memoria + ejecución</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cap-name">Detecta brand inflando ROAS de non-brand</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> No</td>
+              <td class="cell-maybe"><span class="cell-icon">◐</span> Si lo busca</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Automático</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Audita conversion goals mal configurados</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> Parcial</td>
+              <td class="cell-maybe"><span class="cell-icon">◐</span> Rara vez</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Siempre</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Lee texto de assets PMax y valida semántica</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> No</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> Casi nunca</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Cada audit</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Entiende contexto de negocio (no solo reglas)</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> No</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Sí</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Sí</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Ejecuta cambios vía API</td>
+              <td class="cell-maybe"><span class="cell-icon">◐</span> Algunos</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Manual</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Mismo día</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Audita campañas pausadas (rescata oportunidades)</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> No</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> Raro</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Todas</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Memoria por cuenta (aprende entre sesiones)</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> No</td>
+              <td class="cell-maybe"><span class="cell-icon">◐</span> Si mismo analista</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Siempre</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Evalúa impacto 7 días después del cambio</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> No</td>
+              <td class="cell-maybe"><span class="cell-icon">◐</span> Si cliente pregunta</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Automático</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Kill switch protocol para campañas zombie</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> No</td>
+              <td class="cell-no"><span class="cell-icon">✕</span> Subjetivo</td>
+              <td class="cell-yes"><span class="cell-icon">✓</span> Criterios claros</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Tiempo diagnóstico→ejecución</td>
+              <td class="cell-meta"><strong>N/A</strong><br>Solo sugiere</td>
+              <td class="cell-meta"><strong>1-3 semanas</strong><br>Brief → ejec</td>
+              <td class="cell-yes-big"><strong>Mismo día</strong><br>Sin gap</td>
+            </tr>
+            <tr>
+              <td class="cap-name">Costo mensual</td>
+              <td class="cell-meta">$200-800 USD</td>
+              <td class="cell-meta">$2,000-10,000 USD</td>
+              <td class="cell-yes-big">$750-3,000 USD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Categorías explicadas en cards -->
+    <div class="competitive-cards reveal">
+      <div class="competitive-card competitive-card-saas">
+        <div class="competitive-card-icon">⚙</div>
+        <h3 class="competitive-card-title">SaaS de reglas estáticas</h3>
+        <div class="competitive-card-examples">Optmyzr, Adalysis, WordStream, Opteo, SEMrush</div>
+        <p class="competitive-card-desc">
+          Operan con reglas fijas: <em>"si CPC &gt; X, alertar"</em>. Útiles para dashboards y alertas básicas.
+        </p>
+        <ul class="competitive-card-bullets">
+          <li>No entienden tu negocio (no saben que "vestidos de baño" es irrelevante)</li>
+          <li>Sugieren, no ejecutan — el humano implementa manualmente</li>
+          <li>No evalúan impacto 7 días después</li>
+        </ul>
+      </div>
+
+      <div class="competitive-card competitive-card-agency">
+        <div class="competitive-card-icon">👥</div>
+        <h3 class="competitive-card-title">Agencia tradicional</h3>
+        <div class="competitive-card-examples">Consultora externa o equipo in-house</div>
+        <p class="competitive-card-desc">
+          Sí entienden el negocio y ejecutan, pero el flujo "brief → aprobación → ejecución" es lento.
+        </p>
+        <ul class="competitive-card-bullets">
+          <li>Semanas entre diagnóstico e implementación</li>
+          <li>$2,000-10,000 USD/mes por cuenta</li>
+          <li>Dependen del conocimiento individual del analista asignado</li>
+        </ul>
+      </div>
+
+      <div class="competitive-card competitive-card-us">
+        <div class="competitive-card-icon">
+          <span class="competitive-card-mark">L</span>
+        </div>
+        <h3 class="competitive-card-title">Linnda Search</h3>
+        <div class="competitive-card-examples">IA con contexto + ejecución + memoria</div>
+        <p class="competitive-card-desc">
+          Primer producto que combina las 4 capas: auditoría con contexto + ejecución vía API +
+          monitoreo continuo + evaluación de impacto.
+        </p>
+        <ul class="competitive-card-bullets">
+          <li>~20 min de audit completo · 8 agentes IA en secuencia</li>
+          <li>Ejecución mismo día vía API · 13.2 acciones por cliente en primera sesión</li>
+          <li>Memoria por cuenta aprende de cada sesión · evaluator monitorea post-fix</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="competitive-footnote reveal">
+      No es "mejor que una agencia" o "mejor que un SaaS" — es una <strong>categoría nueva</strong>.
+      Las comparaciones son directas con <a href="https://www.optmyzr.com" target="_blank" rel="noopener">Optmyzr</a>,
+      <a href="https://adalysis.com" target="_blank" rel="noopener">Adalysis</a>,
+      <a href="https://www.wordstream.com" target="_blank" rel="noopener">WordStream</a> y
+      <a href="https://opteo.com" target="_blank" rel="noopener">Opteo</a> — las 4 herramientas SaaS más usadas para Google Ads en LatAm.
+    </div>
+  </div>
+</section>
+
 <!-- BACKED BY LINNDA (institutional social proof, no faces) -->
 <section class="team">
   <div class="container">
@@ -3889,7 +4411,7 @@
             <div class="backed-stat-label">ROI promedio*</div>
           </div>
         </div>
-        <a href="https://linnda.co" target="_blank" rel="noopener" class="backed-link">
+        <a href="https://www.linnda.co" target="_blank" rel="noopener" class="backed-link">
           Conocer Linnda · linnda.co →
         </a>
       </div>
@@ -4202,7 +4724,7 @@
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-a">
-          <p><strong>Linnda Search es un producto oficial de Linnda</strong>, enfocado en optimización de paid search con IA. Linnda principal (<a href="https://linnda.co" target="_blank" style="color:var(--linnda-verde);">linnda.co</a>) opera en Trade Promotion Optimization para empresas CPG. Compartimos equipo fundador, arquitectura técnica, y mismos principios: IA + memoria + decisión humana.</p>
+          <p><strong>Linnda Search es un producto oficial de Linnda</strong>, enfocado en optimización de paid search con IA. Linnda principal (<a href="https://www.linnda.co" target="_blank" style="color:var(--linnda-verde);">linnda.co</a>) opera en Trade Promotion Optimization para empresas CPG. Compartimos equipo fundador, arquitectura técnica, y mismos principios: IA + memoria + decisión humana.</p>
         </div>
       </div>
     </div>
@@ -4378,10 +4900,11 @@
       <div class="footer-col">
         <h4>Linnda</h4>
         <ul>
-          <li><a href="https://linnda.co" target="_blank" rel="noopener">linnda.co</a></li>
-          <li><a href="https://linnda.co/soluciones/oferta-optimizada" target="_blank" rel="noopener">Trade Marketing</a></li>
-          <li><a href="https://linnda.co/nosotros" target="_blank" rel="noopener">Equipo</a></li>
-          <li><a href="https://linnda.co/recursos" target="_blank" rel="noopener">Recursos</a></li>
+          <li><a href="https://www.linnda.co" target="_blank" rel="noopener">linnda.co</a></li>
+          <li><a href="https://www.linnda.co/soluciones/oferta-optimizada" target="_blank" rel="noopener">Oferta Optimizada</a></li>
+          <li><a href="https://www.linnda.co/soluciones/segmentacion" target="_blank" rel="noopener">Segmentación</a></li>
+          <li><a href="https://www.linnda.co/nosotros" target="_blank" rel="noopener">Nosotros</a></li>
+          <li><a href="https://www.linnda.co/recursos" target="_blank" rel="noopener">Recursos</a></li>
         </ul>
       </div>
 
@@ -4398,9 +4921,10 @@
 
     <div class="footer-bottom">
       <div>© 2026 Linnda · Producto Linnda Search</div>
-      <div style="display:flex; gap: 20px;">
-        <a href="https://linnda.co/privacidad" target="_blank" rel="noopener">Privacidad</a>
-        <a href="https://linnda.co/terminos" target="_blank" rel="noopener">Términos</a>
+      <div style="display:flex; gap: 20px; flex-wrap: wrap;">
+        <a href="https://www.linnda.co/privacidad" target="_blank" rel="noopener">Privacidad</a>
+        <a href="https://www.linnda.co/terminos" target="_blank" rel="noopener">Términos</a>
+        <a href="https://www.linnda.co/cookies" target="_blank" rel="noopener">Cookies</a>
       </div>
     </div>
   </div>
