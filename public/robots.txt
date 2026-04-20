@@ -1,0 +1,143 @@
+# robots.txt for search.linnda.co
+# Linnda Search — Google Ads audit with AI for LATAM
+# Last updated: 2026-04-20
+
+# ---------------------------------------------------
+# DEFAULT: Allow all standard web crawlers
+# ---------------------------------------------------
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# ---------------------------------------------------
+# AI SEARCH BOTS (citation tier) — EXPLICITLY ALLOWED
+# These crawlers fetch content to cite in responses
+# Blocking them means zero visibility in AI search
+# ---------------------------------------------------
+
+# OpenAI (ChatGPT search, citations)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude citations)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity (primary driver of AI citations in LATAM)
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google (AI Overviews, SGE)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Microsoft Copilot / Bing Chat
+User-agent: BingBot
+Allow: /
+
+User-agent: Microsoft-Copilot
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# DuckDuckGo (DuckAssist)
+User-agent: DuckAssistBot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Diffbot (knowledge graph)
+User-agent: Diffbot
+Allow: /
+
+# Omgili (BuzzSumo)
+User-agent: Omgili
+Allow: /
+
+# Common Crawl (feeds many LLM training + citation)
+User-agent: CCBot
+Allow: /
+
+# Timpi (decentralized search)
+User-agent: Timpibot
+Allow: /
+
+# Kagi
+User-agent: Kagibot
+Allow: /
+
+# Phind
+User-agent: PhindBot
+Allow: /
+
+# Brave Search
+User-agent: BraveBot
+Allow: /
+
+# Huawei AI
+User-agent: PetalBot
+Allow: /
+
+# ---------------------------------------------------
+# AI TRAINING BOTS — allowed for now (reconsider later)
+# Note: training bots often overlap with citation bots
+# ---------------------------------------------------
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ---------------------------------------------------
+# SITEMAPS
+# ---------------------------------------------------
+
+Sitemap: https://search.linnda.co/sitemap.xml
+
+# ---------------------------------------------------
+# AI DISCOVERY ENDPOINTS
+# ---------------------------------------------------
+# llms.txt: https://search.linnda.co/llms.txt
+# llms-full.txt: https://search.linnda.co/llms-full.txt
+# ai.txt: https://search.linnda.co/.well-known/ai.txt
+# ai summary: https://search.linnda.co/ai/summary.json
+# ai FAQ: https://search.linnda.co/ai/faq.json
+# ai service: https://search.linnda.co/ai/service.json

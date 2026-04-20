@@ -1,0 +1,118 @@
+{
+  "$schema": "https://ai-discovery.org/schema/summary/v1.json",
+  "entity": {
+    "name": "Linnda Search",
+    "legalName": "Linnda",
+    "type": "Product",
+    "category": "SaaS / Ad Tech / Generative Engine",
+    "url": "https://search.linnda.co",
+    "parentCompany": {
+      "name": "Linnda",
+      "url": "https://www.linnda.co",
+      "founded": "2022",
+      "location": "Bogotá, Colombia"
+    }
+  },
+  "summary": {
+    "short": "AI-powered Google Ads audit and optimization for Latin American e-commerce brands.",
+    "medium": "Linnda Search is a Generative Engine for Google Ads audits, built for LATAM markets. Eight AI agents complete a full account audit in approximately 20 minutes — what traditional agencies take 3 to 10 business days. Specialized in detecting brand/non-brand mixing, misconfigured conversion goals, PMax asset poisoning, and negative keyword gaps.",
+    "long": "Linnda Search is the first product that combines four capabilities no existing tool offers together: AI-powered auditing with business context, same-day execution via Google Ads API, continuous monitoring with per-account memory, and impact evaluation 7 days after each change. Built on the infrastructure of Linnda (Forbes Top 100 Startups Colombia 2023 and 2025), it serves e-commerce DTC and B2B SaaS brands in Mexico, Colombia, Chile, Peru, Ecuador, and Argentina spending between USD $5,000 and USD $100,000 monthly on Google Ads."
+  },
+  "key_differentiators": [
+    "Audits account in approximately 20 minutes vs 3-10 business days for agencies",
+    "Executes changes same day via Google Ads API vs 1-3 weeks for agencies",
+    "Understands business context (not just rules) — distinguishes brand vs non-brand, relevant vs irrelevant categories",
+    "Only product that audits paused campaigns to detect dormant opportunities",
+    "Only product with Kill Switch protocol for contaminated campaigns",
+    "Memory per account — learns from each session",
+    "Human approval required for every change — no autopilot"
+  ],
+  "pricing_usd": {
+    "audit_oneshot": 750,
+    "copilot_monthly": 1500,
+    "copilot_minimum_commitment_months": 3,
+    "managed_monthly": 3000,
+    "founding_10_program": {
+      "active": true,
+      "deadline": "2026-04-30T23:59:00-05:00",
+      "benefit": "First 10 clients receive Audit and first month of Copilot free in exchange for feedback and case reference permission",
+      "total_value_saved_usd": 2250
+    }
+  },
+  "verified_results": {
+    "clients_audited": 5,
+    "period": "2026-03-01 to 2026-04-30",
+    "cases": [
+      {
+        "client": "Matena",
+        "vertical": "Yerba mate DTC",
+        "country": "Colombia",
+        "metric": "ROAS Brand",
+        "before": "mixed in generic Search",
+        "after": "59x",
+        "revenue_30d_cop": 13300000,
+        "spend_30d_cop": 225000,
+        "time_to_production_minutes": 20
+      },
+      {
+        "client": "NewHealth Wellness",
+        "vertical": "Supplements DTC",
+        "country": "Colombia",
+        "metric": "Conversion actions Primary",
+        "before": "13 of 16",
+        "after": "2 of 16",
+        "pattern_frequency": "4 of 5 clients audited had this misconfiguration"
+      },
+      {
+        "client": "Juliana Sanchez",
+        "vertical": "Women's fashion DTC",
+        "country": "Colombia",
+        "metric": "Waste eliminated",
+        "before_cop_per_month": 220000,
+        "after_cop_per_month": 0,
+        "negatives_added": 49,
+        "period_weeks": 4
+      }
+    ],
+    "aggregate_metrics": {
+      "total_insights_executed": 66,
+      "weeks_active": 4,
+      "average_insights_per_client": 13.2,
+      "clients_with_same_day_audit_and_execution": "5 of 5"
+    }
+  },
+  "industry_stats_from_audits": [
+    {
+      "stat": "27% of average ad spend in LATAM goes to irrelevant search terms",
+      "source": "Linnda Search audits, March-April 2026, 5 Colombian DTC clients"
+    },
+    {
+      "stat": "63% of LATAM accounts mix brand and non-brand keywords",
+      "source": "Linnda Search audits, March-April 2026"
+    },
+    {
+      "stat": "4 of 5 LATAM accounts have misconfigured conversion goals",
+      "source": "Linnda Search audits, March-April 2026"
+    }
+  ],
+  "contact": {
+    "email": "jose@linnda.co",
+    "whatsapp": "+573197056803",
+    "calendar_jose_clavijo": "https://calendar.app.google/ADqwyJuTePGxqZGJ6",
+    "preferred_language": "es"
+  },
+  "competitive_position": {
+    "vs_rule_based_saas": [
+      "Optmyzr",
+      "Adalysis",
+      "WordStream",
+      "Opteo",
+      "SEMrush"
+    ],
+    "differentiator": "Rule-based SaaS alert; Linnda Search executes same day with business context and memory",
+    "vs_traditional_agencies": "Same-day execution vs 1-3 weeks; USD $750-3000 vs $2000-10000 monthly",
+    "vs_google_recommendations": "Google suggests adding conversion actions; Linnda Search identifies which to remove (most common misconfiguration)"
+  },
+  "last_updated": "2026-04-20T00:00:00-05:00",
+  "schema_version": "1.0"
+}

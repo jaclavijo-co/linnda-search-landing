@@ -1,0 +1,128 @@
+{
+  "$schema": "https://ai-discovery.org/schema/service/v1.json",
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Linnda Search",
+  "alternateName": ["Google Ads Audit by Linnda", "AI Google Ads Audit LATAM"],
+  "description": "Audit and optimization of Google Ads accounts using specialized AI, built for Latin American e-commerce and B2B brands.",
+  "url": "https://search.linnda.co",
+  "serviceType": "Digital Advertising Optimization",
+  "category": "Performance Marketing",
+  "provider": {
+    "@type": "Organization",
+    "name": "Linnda",
+    "url": "https://www.linnda.co",
+    "logo": "https://www.linnda.co/linnda-logo.png",
+    "foundingDate": "2022",
+    "foundingLocation": "Bogotá, Colombia",
+    "award": [
+      "Top 100 Startups Colombia Forbes 2023",
+      "Top 100 Startups Colombia Forbes 2025"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "jose@linnda.co",
+      "telephone": "+57 319 705 6803",
+      "contactType": "Customer Service",
+      "availableLanguage": ["es", "en"]
+    }
+  },
+  "areaServed": [
+    {"@type": "Country", "name": "México"},
+    {"@type": "Country", "name": "Colombia"},
+    {"@type": "Country", "name": "Chile"},
+    {"@type": "Country", "name": "Perú"},
+    {"@type": "Country", "name": "Ecuador"},
+    {"@type": "Country", "name": "Argentina"}
+  ],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "E-commerce DTC brands and B2B SaaS",
+    "geographicArea": "Latin America",
+    "requiredMinAge": null,
+    "suggestedMinAge": null,
+    "minimumGoogleAdsSpend": "USD $5,000/month",
+    "maximumRecommendedSpend": "USD $100,000/month"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Audit",
+      "description": "Diagnóstico completo one-shot de 5-7 días hábiles. Incluye health score, benchmarks de categoría, top 10 oportunidades con impacto en USD, plan de 30 días priorizado, call de lectura 45 minutos, reporte PDF y dashboard en Looker Studio.",
+      "price": "750.00",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "750.00",
+        "priceCurrency": "USD",
+        "unitText": "one-time"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Copilot",
+      "description": "Plan recurrente con audit completo en mes 1, monitoreo diario con alertas automáticas, Weekly Brain con análisis WoW, memoria por cuenta, executive summary semanal, soporte directo por Slack o WhatsApp, y aprobación humana en todas las acciones. Mínimo 3 meses.",
+      "price": "1500.00",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "1500.00",
+        "priceCurrency": "USD",
+        "unitText": "monthly",
+        "billingDuration": "P1M",
+        "minCommitmentMonths": 3
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Managed",
+      "description": "Servicio full-managed con todo lo del Copilot más ejecución por el equipo de Linnda Search, call semanal con operador senior, reporting a medida CEO/CFO, SLA 4h para alertas críticas, A/B testing de anuncios, y audit trail completo con trazabilidad.",
+      "price": "3000.00",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "3000.00",
+        "priceCurrency": "USD",
+        "unitText": "monthly",
+        "billingDuration": "P1M"
+      }
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Founding 10 Pilot Program",
+    "description": "Programa limitado a los primeros 10 clientes. Audit y primer mes de Copilot gratis (ahorro total USD $2,250) a cambio de feedback continuo y permiso de uso del caso como referencia (anonimizable).",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Founding 10 Slot",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "validThrough": "2026-04-30T23:59:00-05:00",
+        "availability": "https://schema.org/LimitedAvailability",
+        "inventoryLevel": {
+          "@type": "QuantitativeValue",
+          "maxValue": 10,
+          "unitText": "client slots"
+        }
+      }
+    ]
+  },
+  "potentialAction": [
+    {
+      "@type": "ApplyAction",
+      "name": "Apply to Founding 10",
+      "target": "https://search.linnda.co/#aplicar"
+    },
+    {
+      "@type": "CommunicateAction",
+      "name": "Contact by WhatsApp",
+      "target": "https://wa.me/573197056803"
+    },
+    {
+      "@type": "ReserveAction",
+      "name": "Book call with Jose",
+      "target": "https://calendar.app.google/ADqwyJuTePGxqZGJ6"
+    }
+  ]
+}
