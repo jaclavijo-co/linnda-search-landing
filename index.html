@@ -8,9 +8,9 @@
 <meta name="author" content="Linnda">
 <meta name="publisher" content="Linnda">
 
-<title>Linnda Search — Audit de Google Ads con IA para LatAm</title>
-<meta name="description" content="Auditamos tu cuenta de Google Ads con IA especializada en LatAm. Encontramos waste, priorizamos acciones y entregamos un plan de 30 días. Audit gratis para los primeros 20 clientes.">
-<meta name="keywords" content="audit google ads, auditoría google ads, optimización google ads, agencia google ads latam, performance marketing méxico, performance marketing colombia, AI google ads, optmyzr alternativa, linnda search">
+<title>Linnda Search — Recupera el 20% de ROAS que ya está en tu cuenta de Google Ads</title>
+<meta name="description" content="Tu próximo 20% de ROAS ya está en tu cuenta. Linnda Search lo encuentra con IA, optimiza conversion goals y ejecuta cambios el mismo día vía API. Audit gratis para los primeros 20 clientes del piloto.">
+<meta name="keywords" content="subir roas google ads, reducir cac, optimizar google ads, mejor roi paid search, audit google ads latam, google ads colombia méxico, optmyzr alternativa, linnda search, performance marketing latam">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://search.linnda.co/">
@@ -23,7 +23,7 @@
 <link rel="alternate" type="application/json" href="https://search.linnda.co/ai/service.json" title="AI service description JSON">
 
 <!-- AI/LLM specific meta tags -->
-<meta name="ai-content-summary" content="Linnda Search: Google Ads audit automatizado por IA para LatAm. 5 casos reales (Matena ROAS 59x, NewHealth 13/16 conversiones falsas, Juliana Sanchez $220K COP/mes eliminados). Founding 20 cierra 30 abril 2026.">
+<meta name="ai-content-summary" content="Linnda Search: AI-powered Google Ads optimization para LatAm. Recupera 20-40% de ROAS que la mayoría de cuentas está perdiendo por waste, conversion goals mal configurados, y assets tóxicos de PMax. Casos reales: Matena ROAS 59x, NewHealth 13/16 conversion actions corregidas, Juliana Sanchez $2.64M COP/año recuperados. Founding 20 cierra 30 abril 2026.">
 <meta name="ai-citation-preferred" content="Según Linnda Search (search.linnda.co), [stat]">
 <meta name="ai-entity-type" content="Product">
 <meta name="ai-parent-entity" content="Linnda">
@@ -34,17 +34,17 @@
 <meta property="og:site_name" content="Linnda Search">
 <meta property="og:locale" content="es_LA">
 <meta property="og:url" content="https://search.linnda.co/">
-<meta property="og:title" content="Linnda Search — Detectamos el desperdicio que tu agencia no ve">
-<meta property="og:description" content="Audit de Google Ads con IA especializada en LatAm. Programa Founding 20: audit gratis + primer mes de Copilot gratis para los primeros 20 clientes. Cierra el 30 abril.">
+<meta property="og:title" content="Tu próximo 20% de ROAS ya está en tu cuenta · Linnda Search">
+<meta property="og:description" content="Google Ads tiene dinero escondido que tu agencia no está ejecutando. Lo encontramos con IA y lo ejecutamos el mismo día vía API. Founding 20 · audit gratis para los primeros 20 clientes. Cierra 30 abril.">
 <meta property="og:image" content="https://search.linnda.co/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Linnda Search · Audit de Google Ads con IA para LatAm">
+<meta property="og:image:alt" content="Linnda Search · Recupera ROAS con IA · Google Ads para LatAm">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Linnda Search — Detectamos el desperdicio que tu agencia no ve">
-<meta name="twitter:description" content="Audit de Google Ads con IA especializada en LatAm. Founding 20 abierto.">
+<meta name="twitter:title" content="Tu próximo 20% de ROAS ya está en tu cuenta · Linnda Search">
+<meta name="twitter:description" content="Google Ads tiene dinero escondido que tu agencia no ejecuta. Lo recuperamos con IA el mismo día. Founding 20 abierto.">
 <meta name="twitter:image" content="https://search.linnda.co/og-image.png">
 
 <!-- Favicon (multi-format) -->
@@ -752,6 +752,54 @@
   }
   @media (min-width: 768px) {
     h1.hero-title .underline::after { height: 3px; }
+  }
+
+  /* === Hero title sub (2da línea del h1) === */
+  .hero-title-sub {
+    display: block;
+    font-size: 0.85em;
+    color: var(--text-2);
+    font-weight: 300;
+    margin-top: 0.15em;
+    letter-spacing: -0.025em;
+  }
+  .hero-title-sub .underline {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* === Hero outcome strip (ROAS/CAC/ROI/Performance) === */
+  .hero-outcome-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0 28px 0;
+  }
+  @media (min-width: 768px) {
+    .hero-outcome-strip { gap: 12px; margin: 24px 0 32px 0; }
+  }
+  .hero-outcome-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  @media (min-width: 768px) {
+    .hero-outcome-item { padding: 8px 16px; font-size: 12px; }
+  }
+  .hero-outcome-symbol {
+    color: var(--accent-blue);
+    font-weight: 700;
+    font-size: 1.1em;
+    line-height: 1;
   }
 
   .hero-sub {
@@ -3136,6 +3184,27 @@
     letter-spacing: -0.02em;
   }
   .plan-header { display: flex; flex-direction: column; gap: 4px; }
+
+  /* === Plan outcome tag (ROAS/CAC benefit) === */
+  .plan-outcome-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-blue);
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    font-weight: 500;
+  }
+  .plan-outcome-tag-featured {
+    background: rgba(0, 212, 255, 0.15);
+    border-color: rgba(0, 212, 255, 0.35);
+    color: var(--accent-blue);
+  }
   .plan-sub { font-size: 13px; color: var(--text-3); }
 
   /* Price block con tachado + precio hero + badge OFF */
@@ -4018,7 +4087,7 @@
     </a>
     <div class="nav-links">
       <a href="#como-funciona">Cómo funciona</a>
-      <a href="#calcula">Calcula tu pérdida</a>
+      <a href="#calcula">Calcula tu ROAS</a>
       <a href="#caso">Casos</a>
       <a href="#comparativa">Vs mercado</a>
       <a href="#precios">Precios</a>
@@ -4040,43 +4109,64 @@
         </div>
 
         <h1 class="hero-title reveal">
-          Detectamos el <em>desperdicio</em> que tu agencia <span class="underline">no ve</span>.
+          Tu próximo <em>20% de ROAS</em> ya está en tu cuenta.
+          <span class="hero-title-sub">Solo hay que <span class="underline">recuperarlo</span>.</span>
         </h1>
 
         <p class="hero-sub reveal">
-          Auditamos tu cuenta de Google Ads con IA especializada en LatAm.
-          Encontramos el dinero que se va en clicks que nunca compraron, priorizamos acciones
-          y te damos un plan de 30 días — en días, no semanas.
+          Google Ads tiene dinero escondido que tu agencia no está ejecutando:
+          <strong>keywords contaminadas, conversion goals mal configurados, assets tóxicos de PMax.</strong>
+          Linnda Search lo encuentra con IA en 20 minutos y lo ejecuta vía API el mismo día —
+          no en 2 semanas de brief.
         </p>
+
+        <div class="hero-outcome-strip reveal">
+          <div class="hero-outcome-item">
+            <span class="hero-outcome-symbol">↑</span>
+            <span>ROAS</span>
+          </div>
+          <div class="hero-outcome-item">
+            <span class="hero-outcome-symbol">↓</span>
+            <span>CAC</span>
+          </div>
+          <div class="hero-outcome-item">
+            <span class="hero-outcome-symbol">↑</span>
+            <span>ROI</span>
+          </div>
+          <div class="hero-outcome-item">
+            <span class="hero-outcome-symbol">✓</span>
+            <span>Performance</span>
+          </div>
+        </div>
 
         <div class="hero-ctas reveal">
           <a href="#aplicar" class="btn btn-primary btn-lg">
-            Aplicar al piloto gratis
+            Recuperar mi ROAS · Founding 20
             <span>→</span>
           </a>
-          <a href="https://wa.me/573197056803?text=Hola%2C%20vi%20search.linnda.co%20y%20quiero%20info%20del%20Founding%2010"
+          <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20con%20Linnda%20Search%20(Founding%2020)"
              target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Escribir por WhatsApp
+            Hablar por WhatsApp
           </a>
         </div>
 
         <div class="hero-meta reveal">
           <div class="hero-meta-item">
             <div class="hero-meta-value">20<span class="unit">min</span></div>
-            <div class="hero-meta-label">Análisis automático</div>
+            <div class="hero-meta-label">Diagnóstico + primera ejecución</div>
           </div>
           <div class="hero-meta-item">
-            <div class="hero-meta-value">90<span class="unit">días</span></div>
-            <div class="hero-meta-label">Historia analizada</div>
+            <div class="hero-meta-value">+20<span class="unit">%</span></div>
+            <div class="hero-meta-label">ROAS recuperable típico</div>
           </div>
           <div class="hero-meta-item">
-            <div class="hero-meta-value">30<span class="unit">días</span></div>
-            <div class="hero-meta-label">Plan de acción</div>
+            <div class="hero-meta-value">0<span class="unit">weeks</span></div>
+            <div class="hero-meta-label">Tiempo de brief vs. agencia</div>
           </div>
           <div class="hero-meta-item">
             <div class="hero-meta-value">100%</div>
-            <div class="hero-meta-label">Aprobación humana</div>
+            <div class="hero-meta-label">Aprobación humana · no autopilot</div>
           </div>
         </div>
       </div>
@@ -4173,20 +4263,21 @@
 
       <div class="founding-copy">
         <div class="founding-label">Programa Founding 20</div>
-        <h3>Los primeros 20 no pagan nada.<br><span class="founding-h3-em">Los demás, desde USD $750.</span></h3>
+        <h3>Empezamos a recuperar tu ROAS<br><span class="founding-h3-em">desde el día 1 · gratis.</span></h3>
         <p>
           Audit completo <span class="strikethrough">USD $750</span> <span class="free">gratis</span> +
-          primer mes de Copilot <span class="strikethrough">USD $1,500</span> <span class="free">gratis</span>.
+          primer mes de Copilot <span class="strikethrough">USD $1,500</span> <span class="free">gratis</span>
+          para los primeros 20 clientes del piloto.
           A cambio: feedback continuo durante el mes 1 + permiso para usar el caso como referencia (anonimizable si prefieres).
         </p>
         <div class="founding-exclusions">
-          <strong>Ahorras USD $2,250</strong> en el piloto · Sin tarjeta · Sin compromiso de continuidad
+          <strong>Ahorras USD $2,250</strong> · Sin tarjeta · Sin compromiso de continuidad · Cierra 30 abril
         </div>
       </div>
 
       <div class="founding-ctas">
-        <a href="#aplicar" class="btn btn-primary btn-lg">Aplicar al piloto →</a>
-        <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20aplicar%20al%20Founding%2010%20de%20Linnda%20Search"
+        <a href="#aplicar" class="btn btn-primary btn-lg">Recuperar mi ROAS · Gratis →</a>
+        <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20con%20Linnda%20Search%20(Founding%2020)"
            target="_blank" rel="noopener" class="founding-wa-link">
           o escribir por WhatsApp ↗
         </a>
@@ -4198,12 +4289,13 @@
 <!-- PERSONA STORYTELLING (estilo linnda.co) -->
 <section class="persona">
   <div class="container">
-    <div class="section-label">El problema</div>
-    <h2 class="reveal">Si estás gastando <em>+USD $5K/mes</em> en Google Ads, probablemente pierdes 20-30%.</h2>
+    <div class="section-label">Dónde está tu ROAS perdido</div>
+    <h2 class="reveal">Entre el <em>20% y 40%</em> de tu presupuesto está optimizado hacia las <span class="underline">señales equivocadas</span>.</h2>
     <p class="section-sub reveal" style="max-width: 720px;">
-      Ese 20-30% es dinero real: presupuesto que paga por clicks de gente que nunca comprará,
-      señales de conversión que engañan al algoritmo de Google, keywords que compiten entre sí
-      sin que te des cuenta. Tu agencia no te lo dice porque no lo está midiendo.
+      Recuperar ese margen vale más que pedirle más budget al CFO — y es mucho más rápido.
+      Tu agencia no te lo dice porque no lo está midiendo: no audita search terms con contexto
+      de negocio, no revisa qué conversion goals están entrenando a Smart Bidding,
+      no detecta los assets tóxicos que PMax auto-genera.
     </p>
 
     <div class="persona-grid">
@@ -4219,17 +4311,17 @@
         <div class="problem-cell">
           <div class="problem-cell-num">01</div>
           <div class="problem-cell-big">27%</div>
-          <div class="problem-cell-label">del gasto promedio en cuentas LatAm va a search terms irrelevantes.</div>
+          <div class="problem-cell-label">del presupuesto se va a search terms que NO compran — ROAS directo perdido.</div>
         </div>
         <div class="problem-cell">
           <div class="problem-cell-num">02</div>
           <div class="problem-cell-big">63%</div>
-          <div class="problem-cell-label">mezclan brand y non-brand sin segregar, inflando ROAS aparente.</div>
+          <div class="problem-cell-label">mezclan brand y non-brand — tu ROAS reportado está inflado 2-3x sobre el real.</div>
         </div>
         <div class="problem-cell">
           <div class="problem-cell-num">03</div>
-          <div class="problem-cell-big">14h</div>
-          <div class="problem-cell-label">perdidas cada semana revisando lo mismo sin memoria histórica.</div>
+          <div class="problem-cell-big">4/5</div>
+          <div class="problem-cell-label">de cuentas tienen conversion goals que entrenan mal a Smart Bidding — CAC artificial.</div>
         </div>
       </div>
     </div>
@@ -4239,10 +4331,11 @@
 <!-- CALCULADORA INTERACTIVA DE WASTE -->
 <section class="calc" id="calcula">
   <div class="container">
-    <div class="section-label">Calcula tu pérdida</div>
-    <h2 class="reveal">¿Cuánto estás <em>probablemente</em> desperdiciando?</h2>
+    <div class="section-label">Calcula tu ROAS perdido</div>
+    <h2 class="reveal">¿Cuánto ROAS <em>ya tienes</em> esperando que lo recuperes?</h2>
     <p class="section-sub reveal">
-      Estimación conservadora basada en rangos de desperdicio observados en auditorías de cuentas B2C y DTC en LatAm. Ajusta el slider según tu gasto mensual y país.
+      Estimación conservadora basada en rangos de ROAS recuperable observados en auditorías reales de cuentas DTC y B2B en LatAm.
+      Cada dólar aquí es ROAS efectivo que tu cuenta puede recuperar ejecutando los cambios correctos.
     </p>
 
     <div class="calc-wrap reveal">
@@ -4299,10 +4392,11 @@
 <!-- HOW IT WORKS -->
 <section class="how" id="como-funciona">
   <div class="container">
-    <div class="section-label">Cómo funciona</div>
-    <h2 class="reveal">Tres pasos para saber <em>qué está mal</em> en tu cuenta.</h2>
+    <div class="section-label">Cómo recuperamos tu ROAS</div>
+    <h2 class="reveal">Tres pasos para <em>encontrar y ejecutar</em> el ROAS perdido.</h2>
     <p class="section-sub reveal">
-      Conectas tu cuenta, nuestro sistema analiza, tú recibes un reporte accionable — y si tiene sentido, seguimos juntos.
+      Conectas tu cuenta en 2 minutos, nuestra IA identifica el ROAS recuperable,
+      tú apruebas cada cambio y ejecutamos vía API el mismo día.
     </p>
 
     <div class="how-steps">
@@ -4320,28 +4414,30 @@
       </div>
 
       <div class="how-step reveal">
-        <div class="how-step-num">02 · Diagnóstico</div>
-        <div class="how-step-title">IA analiza 90 días de historia</div>
+        <div class="how-step-num">02 · Encontramos</div>
+        <div class="how-step-title">IA identifica ROAS recuperable</div>
         <div class="how-step-desc">
-          Nuestros agentes auditan estructura, search terms, bids, conversión y señales externas. En 20 minutos, no 3 semanas.
+          8 agentes especializados auditan search terms, conversion goals, assets de PMax, quality scores.
+          En 20 minutos te mostramos exactamente dónde está el ROAS que estás perdiendo.
         </div>
         <div class="how-step-detail">
-          <div class="how-step-detail-item">Waste cuantificado en USD</div>
-          <div class="how-step-detail-item">Health score multi-dimensional</div>
-          <div class="how-step-detail-item">Top 5 oportunidades priorizadas</div>
+          <div class="how-step-detail-item">ROAS perdido cuantificado en USD</div>
+          <div class="how-step-detail-item">Top 5 oportunidades con impacto</div>
+          <div class="how-step-detail-item">Benchmark vs. tu categoría LatAm</div>
         </div>
       </div>
 
       <div class="how-step reveal">
-        <div class="how-step-num">03 · Reporte</div>
-        <div class="how-step-title">Plan de 30 días con impacto estimado</div>
+        <div class="how-step-num">03 · Ejecutamos</div>
+        <div class="how-step-title">Cambios vía API el mismo día</div>
         <div class="how-step-desc">
-          Recibes PDF ejecutivo + call de lectura (45 min). Decides si ejecutamos nosotros o tu equipo.
+          Tú apruebas cada acción, nosotros ejecutamos vía Google Ads API en minutos.
+          Evaluamos impacto 7 días después y ajustamos. Sin autopilot, sin "brief de 2 semanas".
         </div>
         <div class="how-step-detail">
-          <div class="how-step-detail-item">Impacto estimado por acción</div>
-          <div class="how-step-detail-item">Priorización impacto/esfuerzo</div>
-          <div class="how-step-detail-item">Benchmarks de tu categoría</div>
+          <div class="how-step-detail-item">Human-in-the-loop siempre</div>
+          <div class="how-step-detail-item">Evaluación de impacto a 7 días</div>
+          <div class="how-step-detail-item">Trazabilidad completa · reverse si falla</div>
         </div>
       </div>
     </div>
@@ -4351,11 +4447,12 @@
 <!-- CASOS REALES · 3 cases study con data de Google Ads API -->
 <section class="cases" id="caso">
   <div class="container">
-    <div class="section-label">Casos reales</div>
-    <h2 class="reveal">Lo que ya hicimos. <em>Con nombres y números verificables.</em></h2>
+    <div class="section-label">ROAS recuperado · casos reales</div>
+    <h2 class="reveal">Lo que ya recuperamos. <em>Con nombres y números verificables.</em></h2>
     <p class="section-sub reveal">
-      3 casos con nombres reales (con permiso), data extraída directamente de Google Ads API,
-      fechas exactas de ejecución. Lo opuesto a "decenas de clientes satisfechos" sin verificación posible.
+      3 clientes reales donde encontramos y ejecutamos el ROAS perdido (con permiso).
+      Data extraída directamente de Google Ads API, fechas exactas de ejecución, valor monetario comprobable.
+      Lo opuesto a "decenas de clientes satisfechos" sin verificación posible.
     </p>
     <div class="cases-trust-strip reveal">
       <div class="cases-trust-item">
@@ -4391,7 +4488,7 @@
           <div class="case-card-v2-tag">Caso 1</div>
         </div>
 
-        <h3 class="case-card-v2-title">La campaña Brand que no existía.</h3>
+        <h3 class="case-card-v2-title">ROAS Brand 0x → <span style="color: var(--accent-blue);">59x en 30 días</span>.</h3>
         <p class="case-card-v2-desc">
           No tenían campaña Brand separada. Los términos de marca ("matena") competían
           dentro de la campaña genérica de Search al mismo CPC que keywords BROAD irrelevantes.
@@ -4465,7 +4562,7 @@
           <div class="case-card-v2-tag">Caso 2</div>
         </div>
 
-        <h3 class="case-card-v2-title">13 de 16 conversiones eran falsas.</h3>
+        <h3 class="case-card-v2-title">CAC real revelado, <span style="color: var(--accent-blue);">Smart Bidding recuperado</span>.</h3>
         <p class="case-card-v2-desc">
           Tenían 13 conversion actions configuradas como <em>Primary</em> — incluyendo Page View,
           Add Payment Info, Directions y Store Visits. Smart Bidding optimizaba hacia "alguien
@@ -4540,7 +4637,7 @@
           <div class="case-card-v2-tag">Caso 3</div>
         </div>
 
-        <h3 class="case-card-v2-title">$220K COP/mes en clics de Zara y Shein.</h3>
+        <h3 class="case-card-v2-title"><span style="color: var(--accent-blue);">$2.64M COP/año</span> redirigidos a keywords que convierten.</h3>
         <p class="case-card-v2-desc">
           Campaña Search con keywords BROAD atrayendo tráfico de marcas competidoras
           ("zara colombia", "shein", "h&m") y categorías no vendidas ("vestidos de baño",
@@ -4606,7 +4703,7 @@
 
     <!-- Velocidad: resumen comparativo -->
     <div class="cases-summary reveal">
-      <div class="cases-summary-title">Velocidad: Linnda vs. el mercado</div>
+      <div class="cases-summary-title">Velocidad de recuperación: Linnda vs. el mercado</div>
       <div class="cases-summary-grid">
         <div class="cases-summary-row">
           <div class="cases-summary-label">Audit completo de cuenta</div>
@@ -4683,11 +4780,11 @@
 <!-- SNIPPETS · Ejemplos concretos de lo que encontramos -->
 <section class="snippets">
   <div class="container">
-    <div class="section-label">Lo que encontramos</div>
-    <h2 class="reveal">Ejemplos reales <em>de lo que tu agencia probablemente no está mirando.</em></h2>
+    <div class="section-label">Dónde está el ROAS perdido</div>
+    <h2 class="reveal">Ejemplos reales <em>del tipo de hallazgos que tu agencia no está ejecutando.</em></h2>
     <p class="section-sub reveal">
-      Snippets granulares del tipo de hallazgos que salen en un audit típico.
-      No abstracciones — análisis línea por línea con impacto monetario concreto.
+      Snippets granulares con impacto monetario concreto. Esto es lo que hay que encontrar
+      y ejecutar para subir ROAS — no dashboards bonitos, sino cambios con plata.
     </p>
 
     <div class="snippets-grid reveal">
@@ -4763,11 +4860,11 @@
 <!-- COMPETITIVE COMPARISON · vs SaaS famosos + agencias -->
 <section class="competitive" id="comparativa">
   <div class="container">
-    <div class="section-label">Categoría nueva</div>
-    <h2 class="reveal">Las herramientas que <em>ya conoces</em> no hacen lo que nosotros hacemos.</h2>
+    <div class="section-label">Dónde está tu próximo ROAS</div>
+    <h2 class="reveal">Optmyzr te <em>alerta</em>. Tu agencia te <em>reporta</em>. Nosotros <span class="underline">ejecutamos</span>.</h2>
     <p class="section-sub reveal">
-      No competimos contra Optmyzr ni contra tu agencia — resolvemos un problema distinto.
-      Esto es exactamente qué puede y no puede hacer cada categoría.
+      No competimos contra herramientas de alertas ni contra agencias tradicionales — resolvemos
+      un problema distinto: ninguno de ellos ejecuta cambios en tu cuenta el mismo día con contexto de negocio.
     </p>
 
     <!-- Logo strip: "Probablemente ya usas o consideraste" -->
@@ -5070,10 +5167,11 @@
 <!-- PRICING -->
 <section class="pricing" id="precios">
   <div class="container">
-    <div class="section-label">Precios</div>
+    <div class="section-label">Precios · 3 formas de recuperar ROAS</div>
     <h2 class="reveal">Transparente. <em>Sin letras chicas.</em></h2>
     <p class="section-sub reveal">
       Todos los precios en USD, pagos por transferencia local (SPEI, PSE) o tarjeta.
+      Cada plan está diseñado para un nivel de compromiso distinto con la recuperación de ROAS.
     </p>
 
     <!-- Pricing switcher: Founding 20 vs Post-piloto -->
@@ -5100,6 +5198,7 @@
       <!-- AUDIT -->
       <div class="plan reveal">
         <div class="plan-header">
+          <div class="plan-outcome-tag">Descubre dónde está tu ROAS perdido</div>
           <div class="plan-name">Audit</div>
           <div class="plan-sub">One-shot · 5-7 días hábiles</div>
         </div>
@@ -5135,6 +5234,7 @@
       <!-- COPILOT (featured) -->
       <div class="plan featured reveal">
         <div class="plan-header">
+          <div class="plan-outcome-tag plan-outcome-tag-featured">Recupera y escala ROAS mensual</div>
           <div class="plan-name">Copilot</div>
           <div class="plan-sub">Recurrente · Mín. 3 meses</div>
         </div>
@@ -5173,6 +5273,7 @@
       <!-- MANAGED -->
       <div class="plan reveal">
         <div class="plan-header">
+          <div class="plan-outcome-tag">Delega 100% la recuperación de revenue</div>
           <div class="plan-name">Managed</div>
           <div class="plan-sub">Full-service</div>
         </div>
@@ -5234,11 +5335,31 @@
     <div class="faq-list">
       <div class="faq-item reveal">
         <div class="faq-q">
+          <div class="faq-q-text">¿Cuánto ROAS puedo realmente recuperar?</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <p>Depende del estado inicial de la cuenta. En las 5 cuentas del piloto, el rango típico fue <strong>20% a 40% de presupuesto recuperable</strong> en los primeros 60 días. Cuentas con agencia sin revisión en 6+ meses tienden al rango alto. Cuentas muy optimizadas al bajo. Te lo cuantificamos en el audit inicial — si no hay mínimo 15% recuperable, no tiene sentido que trabajemos juntos y te lo decimos directo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <div class="faq-q-text">¿En cuánto tiempo veo resultados en ROAS / CAC?</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <p><strong>Primeras ejecuciones: el mismo día del audit</strong> (negativos, pausas, ajustes de estructura). <strong>Impacto medible en ROAS: 14-21 días</strong> (tiempo que Smart Bidding necesita para reaprender con señales limpias). <strong>Impacto pleno en CAC: 30-45 días</strong>. Esto no es una agencia de 3 meses de brief — es ejecución continua desde semana 1.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
           <div class="faq-q-text">¿Para qué tamaño de cuenta funciona mejor?</div>
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-a">
-          <p>El sweet spot son cuentas con <strong>entre USD $5,000 y USD $100,000 de gasto mensual</strong> en Google Ads. Por debajo, el waste absoluto no justifica el fee. Por encima, típicamente necesitas un equipo in-house (podemos ayudar como copilot).</p>
+          <p>El sweet spot son cuentas con <strong>entre USD $5,000 y USD $100,000 de gasto mensual</strong> en Google Ads. Por debajo, el ROAS recuperable absoluto no justifica el fee. Por encima, típicamente necesitas un equipo in-house (podemos ayudar como copilot).</p>
         </div>
       </div>
 
@@ -5248,7 +5369,7 @@
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-a">
-          <p>El Audit funciona como <strong>segunda opinión independiente</strong>. No pedimos que cambies de agencia — solo que veas qué se puede mejorar. Si tu agencia quiere implementar los hallazgos, perfecto. Si no, te ayudamos nosotros.</p>
+          <p>El Audit funciona como <strong>segunda opinión independiente</strong>. No pedimos que cambies de agencia — solo que veas cuánto ROAS se puede recuperar. Si tu agencia quiere implementar los hallazgos, perfecto. Si no, te ayudamos nosotros.</p>
         </div>
       </div>
 
@@ -5264,11 +5385,11 @@
 
       <div class="faq-item reveal">
         <div class="faq-q">
-          <div class="faq-q-text">¿Por qué regalan el primer mes en el piloto?</div>
+          <div class="faq-q-text">¿Por qué regalan el primer mes en el Founding 20?</div>
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-a">
-          <p>Estamos construyendo benchmarks propios de LatAm específicos de Google Ads y cada cliente del piloto entrena el sistema en patrones locales. A cambio de tu feedback y permiso para usar el caso (anonimizado si quieres), te damos el audit y el primer mes de Copilot gratis.</p>
+          <p>Estamos construyendo benchmarks propios de LatAm específicos de Google Ads y cada cliente del piloto entrena el sistema en patrones locales. A cambio de tu feedback y permiso para usar el caso (anonimizado si quieres), te damos el audit y el primer mes de Copilot gratis — empezamos a recuperar tu ROAS desde el día 1 sin costo.</p>
         </div>
       </div>
 
@@ -5310,10 +5431,11 @@
   <div class="apply-glow"></div>
   <div class="container">
     <div class="apply-header">
-      <div class="section-label">Aplicar al piloto</div>
-      <h2 class="reveal">Dos formas de empezar. <em>Tú eliges.</em></h2>
+      <div class="section-label">Recuperar mi ROAS · Founding 20</div>
+      <h2 class="reveal">Empieza a recuperar tu ROAS. <em>Dos formas de iniciar.</em></h2>
       <p class="section-sub reveal" style="margin: 0 auto 0;">
         Si ya estás decidido, escríbenos directo por WhatsApp. Si prefieres formal, llena el formulario y te contactamos en menos de 48h.
+        El audit inicial es gratis para los primeros 20 clientes del piloto — empezamos a ejecutar desde el día 1.
       </p>
     </div>
 
@@ -5389,7 +5511,7 @@
           <div class="form-success" id="success-msg">
             <h3>Aplicación recibida ✓</h3>
             <p>En &lt;48h nos contactamos. Si quieres adelantar, escribe por WhatsApp.</p>
-            <a href="https://wa.me/573197056803?text=Hola%2C%20acabo%20de%20aplicar%20al%20Founding%2010%20y%20quiero%20adelantar"
+            <a href="https://wa.me/573197056803?text=Hola%2C%20acabo%20de%20aplicar%20al%20Founding%2020%20y%20quiero%20adelantar"
                target="_blank" rel="noopener" class="btn btn-whatsapp">
               Escribir por WhatsApp →
             </a>
@@ -5425,7 +5547,7 @@
             Hola, vi search.linnda.co y quiero info del Founding 20. Estamos gastando ~USD $X al mes en Google Ads y nos interesa el audit.
           </div>
 
-          <a href="https://wa.me/573197056803?text=Hola%2C%20vi%20search.linnda.co%20y%20quiero%20info%20del%20Founding%2010"
+          <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20con%20Linnda%20Search%20(Founding%2020)"
              target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top: auto;">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Abrir WhatsApp
@@ -5465,7 +5587,7 @@
         <h4>Producto</h4>
         <ul>
           <li><a href="#como-funciona">Cómo funciona</a></li>
-          <li><a href="#calcula">Calcula tu pérdida</a></li>
+          <li><a href="#calcula">Calcula tu ROAS</a></li>
           <li><a href="#caso">Caso real</a></li>
           <li><a href="#precios">Precios</a></li>
         </ul>
@@ -5520,7 +5642,7 @@
 </div>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/573197056803?text=Hola%2C%20vi%20search.linnda.co%20y%20quiero%20info"
+<a href="https://wa.me/573197056803?text=Hola%2C%20vi%20search.linnda.co%20y%20quiero%20recuperar%20mi%20ROAS"
    target="_blank" rel="noopener"
    class="wa-float"
    aria-label="Escribir por WhatsApp">
@@ -5531,7 +5653,7 @@
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-mobile-cta">
   <a href="#aplicar" class="btn btn-primary">Aplicar al piloto</a>
-  <a href="https://wa.me/573197056803?text=Hola%2C%20vi%20search.linnda.co%20y%20quiero%20info"
+  <a href="https://wa.me/573197056803?text=Hola%2C%20vi%20search.linnda.co%20y%20quiero%20recuperar%20mi%20ROAS"
      target="_blank" rel="noopener" class="btn btn-whatsapp">
     <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     WhatsApp
