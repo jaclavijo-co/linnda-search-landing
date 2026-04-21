@@ -47,6 +47,9 @@
 <meta name="twitter:description" content="Google Ads tiene dinero escondido que tu agencia no ejecuta. Lo recuperamos con IA el mismo día. Founding 20 abierto.">
 <meta name="twitter:image" content="https://googleads.linnda.co/og-image.png">
 
+<!-- intl-tel-input v23 · phone input with country selector -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/css/intlTelInput.min.css">
+
 <!-- Favicon (multi-format) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300B140'/%3E%3Cstop offset='1' stop-color='%2300ff5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='12' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-family='Georgia, serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23001a06'%3EL%3C/text%3E%3Ccircle cx='50' cy='16' r='4' fill='%23001a06' opacity='0.9'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300B140'/%3E%3Cstop offset='1' stop-color='%2300ff5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='180' height='180' rx='34' fill='url(%23g)'/%3E%3Ctext x='90' y='126' font-family='Georgia, serif' font-size='112' font-weight='700' text-anchor='middle' fill='%23001a06'%3EL%3C/text%3E%3C/svg%3E">
@@ -545,8 +548,13 @@
     color: var(--text-3);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-left: 2px;
+    margin-left: 4px;
     font-weight: 400;
+    white-space: nowrap;
+  }
+  @media (max-width: 380px) {
+    /* En móvil muy pequeño, el sub "/ google ads" puede no caber con los nav CTAs */
+    .logo-sub { font-size: 9px; margin-left: 2px; }
   }
 
   .nav-links {
@@ -3677,6 +3685,201 @@
   form .btn-primary.is-loading { opacity: 0.8; cursor: wait; }
   form .btn-primary:disabled { cursor: not-allowed; }
 
+  /* === Form field hint (subtitle below label) === */
+  .form-field-hint {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .form-field-error {
+    font-size: 12px;
+    color: #ff4466;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .form-field-error::before {
+    content: "⚠";
+    font-size: 13px;
+  }
+
+  /* === intl-tel-input v23 · DARK THEME OVERRIDES === */
+  /* Flags sprite path (v23 serves .png from /build/img/) */
+  .iti {
+    --iti-path-flags-1x: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/flags.png");
+    --iti-path-flags-2x: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/flags@2x.png");
+    --iti-path-globe-1x: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/globe.png");
+    --iti-path-globe-2x: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/globe@2x.png");
+    width: 100%;
+    display: block;
+  }
+
+  /* Direct selector fallback (some v23 CSS builds don't use the CSS variables) */
+  .iti__flag {
+    background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/flags.png");
+  }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .iti__flag {
+      background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/flags@2x.png");
+    }
+  }
+  .iti__flag.iti__globe {
+    background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/globe.png");
+  }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .iti__flag.iti__globe {
+      background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/img/globe@2x.png");
+    }
+  }
+
+  /* Main tel input · match .form-input styling exactly */
+  .iti__tel-input,
+  .iti input.iti__tel-input,
+  .iti input[type=tel].iti__tel-input {
+    width: 100% !important;
+    background: var(--bg-3) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: var(--r-sm) !important;
+    color: var(--text) !important;
+    font-family: inherit !important;
+    font-size: 15px !important;
+    transition: border-color 0.2s !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+  }
+  .iti__tel-input:focus,
+  .iti input.iti__tel-input:focus {
+    outline: none !important;
+    border-color: var(--accent-blue) !important;
+  }
+  .iti__tel-input::placeholder {
+    color: var(--text-3) !important;
+  }
+  .iti__tel-input.iti__invalid {
+    border-color: #ff4466 !important;
+  }
+
+  /* Selected flag button (left side with flag + dial code) */
+  .iti__flag-container {
+    border-right: 1px solid var(--border-strong);
+  }
+  .iti__selected-flag {
+    background: transparent !important;
+    padding: 0 8px 0 14px !important;
+    border-radius: var(--r-sm) 0 0 var(--r-sm) !important;
+    transition: background 0.15s;
+  }
+  .iti__selected-flag:hover,
+  .iti__selected-flag[aria-expanded="true"],
+  .iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+    background: rgba(0, 212, 255, 0.08) !important;
+  }
+  .iti__selected-dial-code {
+    color: var(--text-2) !important;
+    font-size: 14px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    margin-left: 6px !important;
+    padding-right: 4px !important;
+  }
+  .iti__arrow {
+    border-top-color: var(--text-3) !important;
+    margin-left: 6px !important;
+  }
+  .iti__arrow--up {
+    border-bottom-color: var(--text-3) !important;
+  }
+
+  /* Dropdown panel with country list */
+  .iti__country-list {
+    background: var(--bg-2) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: var(--r-sm) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.2) !important;
+    padding: 6px !important;
+    margin-top: 4px !important;
+    max-height: 320px !important;
+    overflow-y: auto !important;
+    z-index: 9999 !important;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  .iti__country-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  .iti__country-list::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 3px;
+  }
+  /* Country search input at top of dropdown */
+  .iti__search-input,
+  .iti__country-list input.iti__search-input {
+    background: var(--bg-3) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    font-family: inherit !important;
+    font-size: 13px !important;
+    margin: 4px !important;
+    width: calc(100% - 8px) !important;
+    box-sizing: border-box !important;
+  }
+  .iti__search-input:focus {
+    outline: none !important;
+    border-color: var(--accent-blue) !important;
+  }
+  .iti__search-input::placeholder {
+    color: var(--text-3) !important;
+  }
+  /* Individual country row */
+  .iti__country {
+    padding: 9px 12px !important;
+    border-radius: 6px !important;
+    color: var(--text) !important;
+    font-size: 14px !important;
+    transition: background 0.12s !important;
+    cursor: pointer;
+  }
+  .iti__country:hover,
+  .iti__country.iti__highlight {
+    background: rgba(0, 212, 255, 0.1) !important;
+  }
+  .iti__country-name {
+    color: var(--text) !important;
+    margin-left: 6px;
+  }
+  .iti__dial-code {
+    color: var(--text-3) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 12px !important;
+    margin-left: 8px !important;
+  }
+  .iti__divider {
+    border-bottom: 1px solid var(--border) !important;
+    margin: 4px 8px !important;
+  }
+  /* Preferred countries header (no h3 visible, but divider matters) */
+  .iti__country.iti__preferred {
+    padding-left: 12px !important;
+  }
+  /* Error validation helper (shown on blur if invalid) */
+  .phone-error-msg {
+    display: none;
+    font-size: 12px;
+    color: #ff4466;
+    margin-top: 4px;
+  }
+  .phone-error-msg.show {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .phone-error-msg::before {
+    content: "⚠";
+  }
+
   .btn-spinner {
     display: inline-block;
     width: 14px;
@@ -4083,7 +4286,7 @@
   <div class="container nav-inner">
     <a href="#" class="logo">
       <span class="logo-mark">L</span>
-      Linnda<span class="logo-sub">/ search</span>
+      Linnda<span class="logo-sub">/ google ads</span>
     </a>
     <div class="nav-links">
       <a href="#como-funciona">Cómo funciona</a>
@@ -4144,7 +4347,7 @@
             Recuperar mi ROAS · Founding 20
             <span>→</span>
           </a>
-          <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20con%20Google%20Ads%20Linnda%20(Founding%2020)"
+          <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20en%20Google%20Ads%20(Founding%2020%20de%20Linnda)"
              target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Hablar por WhatsApp
@@ -4277,7 +4480,7 @@
 
       <div class="founding-ctas">
         <a href="#aplicar" class="btn btn-primary btn-lg">Recuperar mi ROAS · Gratis →</a>
-        <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20con%20Google%20Ads%20Linnda%20(Founding%2020)"
+        <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20en%20Google%20Ads%20(Founding%2020%20de%20Linnda)"
            target="_blank" rel="noopener" class="founding-wa-link">
           o escribir por WhatsApp ↗
         </a>
@@ -4382,7 +4585,7 @@
           <span id="waste-pct">27%</span>
         </div>
         <div class="calc-result-cta">
-          <a href="#aplicar" class="btn btn-primary">Audit gratis del Founding 20 →</a>
+          <a href="#aplicar" class="btn btn-primary">Recuperar mi ROAS · Gratis →</a>
         </div>
       </div>
     </div>
@@ -4780,7 +4983,7 @@
 <!-- SNIPPETS · Ejemplos concretos de lo que encontramos -->
 <section class="snippets">
   <div class="container">
-    <div class="section-label">Dónde está el ROAS perdido</div>
+    <div class="section-label">Ejemplos de waste detectado</div>
     <h2 class="reveal">Ejemplos reales <em>del tipo de hallazgos que tu agencia no está ejecutando.</em></h2>
     <p class="section-sub reveal">
       Snippets granulares con impacto monetario concreto. Esto es lo que hay que encontrar
@@ -4860,7 +5063,7 @@
 <!-- COMPETITIVE COMPARISON · vs SaaS famosos + agencias -->
 <section class="competitive" id="comparativa">
   <div class="container">
-    <div class="section-label">Dónde está tu próximo ROAS</div>
+    <div class="section-label">Vs. mercado · Comparativa</div>
     <h2 class="reveal">Optmyzr te <em>alerta</em>. Tu agencia te <em>reporta</em>. Nosotros <span class="underline">ejecutamos</span>.</h2>
     <p class="section-sub reveal">
       No competimos contra herramientas de alertas ni contra agencias tradicionales — resolvemos
@@ -5227,7 +5430,7 @@
           <li>Reporte PDF + dashboard Looker Studio</li>
         </ul>
 
-        <a href="#aplicar" class="btn btn-ghost">Aplicar al piloto</a>
+        <a href="#aplicar" class="btn btn-ghost">Empezar el audit</a>
         <div class="plan-footnote">Después del Founding 20: USD $750 one-shot</div>
       </div>
 
@@ -5266,7 +5469,7 @@
           <li>Aprobación humana en todas las acciones</li>
         </ul>
 
-        <a href="#aplicar" class="btn btn-primary">Aplicar al piloto →</a>
+        <a href="#aplicar" class="btn btn-primary">Empezar a recuperar ROAS →</a>
         <div class="plan-footnote">Después del mes 1 gratis: USD $1,500/mes · 3 meses mín.</div>
       </div>
 
@@ -5321,7 +5524,7 @@
           <div class="pricing-savings-sub">Audit gratis + primer mes de Copilot gratis + 42% OFF en Managed durante el piloto · Cierra el 30 de abril</div>
         </div>
       </div>
-      <a href="#aplicar" class="btn btn-primary">Aplicar ahora →</a>
+      <a href="#aplicar" class="btn btn-primary">Recuperar mi ROAS →</a>
     </div>
   </div>
 </section>
@@ -5491,8 +5694,9 @@
             </div>
 
             <div class="form-field">
-              <label class="form-label">WhatsApp (con código país)</label>
-              <input type="tel" name="phone" class="form-input" placeholder="Ej: +57 300 123 4567" required pattern="[\+]?[0-9\s\-\(\)]+" minlength="8">
+              <label class="form-label">WhatsApp</label>
+              <input type="tel" name="phone" id="phone-input" class="form-input" placeholder="300 123 4567" required>
+              <div class="form-field-hint">Selecciona tu país y escribe tu número sin el código</div>
             </div>
 
             <div class="form-field">
@@ -5569,7 +5773,7 @@
             Hola, vi googleads.linnda.co y quiero info del Founding 20. Estamos gastando ~USD $X al mes en Google Ads y nos interesa el audit.
           </div>
 
-          <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20con%20Google%20Ads%20Linnda%20(Founding%2020)"
+          <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20en%20Google%20Ads%20(Founding%2020%20de%20Linnda)"
              target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top: auto;">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Abrir WhatsApp
@@ -5598,10 +5802,10 @@
       <div class="footer-brand">
         <a href="#" class="logo">
           <span class="logo-mark">L</span>
-          Linnda<span class="logo-sub">/ search</span>
+          Linnda<span class="logo-sub">/ google ads</span>
         </a>
         <p class="footer-tagline">
-          Optimización de Google Ads con IA para marcas de LatAm. Un producto de Linnda.
+          Recupera el ROAS perdido en tu cuenta de Google Ads. Producto oficial de Linnda.
         </p>
       </div>
 
@@ -5711,7 +5915,7 @@
     // WhatsApp número compartido Linnda
     WA_NUMBER: '573197056803',
     WA_DEMO_MSG: 'Hola, vi googleads.linnda.co y quiero recuperar mi ROAS',
-    WA_APPLY_MSG: 'Hola, quiero recuperar mi ROAS con Linnda (Founding 20)'
+    WA_APPLY_MSG: 'Hola, quiero recuperar mi ROAS en Google Ads (Founding 20 de Linnda)'
   };
 
   // Helper: WhatsApp link con mensaje pre-cargado
@@ -5803,6 +6007,87 @@
     }
   });
 
+  // =========================================================
+  // Phone input · intl-tel-input initialization
+  // =========================================================
+  let iti = null;
+  const phoneInput = document.getElementById('phone-input');
+
+  // Load the JS dynamically (it loads after the library CSS is fetched)
+  const loadItiScript = () => new Promise((resolve, reject) => {
+    if (window.intlTelInput) return resolve();
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/intlTelInput.min.js';
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  loadItiScript().then(() => {
+    if (!phoneInput || !window.intlTelInput) return;
+    iti = window.intlTelInput(phoneInput, {
+      initialCountry: 'co', // Colombia default (cliente prioritario)
+      preferredCountries: ['co', 'mx', 'cl', 'pe', 'ec', 'ar', 'es', 'us'],
+      separateDialCode: true,
+      nationalMode: true,       // usuario escribe solo número nacional
+      formatAsYouType: true,
+      strictMode: true,          // previene caracteres inválidos
+      validationNumberType: 'MOBILE', // solo móviles (WhatsApp requerido)
+      placeholderNumberType: 'MOBILE',
+      utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.7/build/js/utils.js',
+    });
+
+    // Link country dropdown con country selector del form (si cambia uno, sincroniza el otro)
+    const countrySelect = form.querySelector('select[name="country"]');
+    if (countrySelect) {
+      // Country selector → phone country
+      countrySelect.addEventListener('change', (e) => {
+        const map = {
+          'Colombia': 'co', 'México': 'mx', 'Chile': 'cl', 'Perú': 'pe',
+          'Ecuador': 'ec', 'Argentina': 'ar', 'España': 'es', 'USA': 'us'
+        };
+        const code = map[e.target.value];
+        if (code) iti.setCountry(code);
+      });
+
+      // Phone country → country selector (reverse sync)
+      phoneInput.addEventListener('countrychange', () => {
+        const countryData = iti.getSelectedCountryData();
+        const reverseMap = {
+          'co': 'Colombia', 'mx': 'México', 'cl': 'Chile', 'pe': 'Perú',
+          'ec': 'Ecuador', 'ar': 'Argentina', 'es': 'España', 'us': 'USA'
+        };
+        const countryName = reverseMap[countryData.iso2];
+        if (countryName && countrySelect.value !== countryName) {
+          countrySelect.value = countryName;
+        }
+      });
+    }
+
+    // Inline validation on blur
+    const errorMsg = document.createElement('div');
+    errorMsg.className = 'phone-error-msg';
+    errorMsg.textContent = 'Por favor ingresa un número de WhatsApp válido';
+    phoneInput.parentElement.parentElement.appendChild(errorMsg);
+
+    phoneInput.addEventListener('blur', () => {
+      if (phoneInput.value.trim() && !iti.isValidNumber()) {
+        phoneInput.classList.add('iti__invalid');
+        errorMsg.classList.add('show');
+      } else {
+        phoneInput.classList.remove('iti__invalid');
+        errorMsg.classList.remove('show');
+      }
+    });
+    phoneInput.addEventListener('focus', () => {
+      phoneInput.classList.remove('iti__invalid');
+      errorMsg.classList.remove('show');
+    });
+  }).catch((err) => {
+    console.warn('[Phone] intl-tel-input failed to load, falling back to plain input:', err);
+    // Fallback: input behaves as regular tel input. Validation less strict.
+  });
+
   // Form handling · con loading state + real webhook support
   const form = document.getElementById('lead-form');
   const successMsg = document.getElementById('success-msg');
@@ -5819,6 +6104,15 @@
       return;
     }
 
+    // Phone validation · stop submit si está mal
+    if (iti && phoneInput.value.trim() && !iti.isValidNumber()) {
+      phoneInput.classList.add('iti__invalid');
+      const errMsg = phoneInput.parentElement.parentElement.querySelector('.phone-error-msg');
+      if (errMsg) errMsg.classList.add('show');
+      phoneInput.focus();
+      return;
+    }
+
     // Loading state
     submitBtn.disabled = true;
     submitBtn.classList.add('is-loading');
@@ -5826,6 +6120,10 @@
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    // Override phone con E.164 format si iti está cargado
+    if (iti && iti.isValidNumber()) {
+      data.phone = iti.getNumber(); // e.g. "+573001234567"
+    }
     // Enriquecer con metadata (workflow puede ignorar lo que no necesite)
     data.source = 'googleads.linnda.co';
     data.submitted_at_client = new Date().toISOString();
