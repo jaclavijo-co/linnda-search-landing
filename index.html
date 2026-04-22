@@ -8,6 +8,22 @@
 <meta name="author" content="Linnda">
 <meta name="publisher" content="Linnda">
 
+<!-- Consent Mode v2 default · MUST load BEFORE GTM/GA4 -->
+<!-- Initial state: everything denied until user explicitly grants via checkbox -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -4067,6 +4083,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   .form-honey { position: absolute; left: -9999px; opacity: 0; }
+  .form-honey-group {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 
   /* Consent checkbox · Ley 1581/2012 compliance */
   .form-consent {
@@ -5979,8 +6003,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </select>
             </div>
 
-            <!-- Honeypot anti-bot: debe quedar vacío, bots lo llenan -->
-            <input type="text" name="website_url" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <!-- Honeypots anti-bot: invisibles para humanos, trampa para bots -->
+            <!-- website_url: legacy honeypot chequeado por el form handler principal -->
+            <input type="text" name="website_url" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" data-honeypot="1">
+            <!-- hp_fullname + hp_website: honeypots chequeados por el workflow n8n de partial-lead -->
+            <div class="form-honey-group" aria-hidden="true">
+              <label for="hp_fullname">Full name (dejar en blanco)</label>
+              <input type="text" id="hp_fullname" name="hp_fullname" tabindex="-1" autocomplete="off" data-honeypot="1">
+              <label for="hp_website">Website (dejar en blanco)</label>
+              <input type="text" id="hp_website" name="hp_website" tabindex="-1" autocomplete="off" data-honeypot="1">
+            </div>
 
             <!-- Consentimiento explícito · requerido por Ley 1581/2012 (Col) + equivalentes LATAM -->
             <label class="form-consent" for="consent-checkbox">
@@ -6462,8 +6494,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // Honeypot: si se llenó, es bot → silent fail (fingimos success)
-    if (form.website_url && form.website_url.value) {
+    // Honeypots: si CUALQUIERA se llenó, es bot → silent fail (fingimos success)
+    if (
+      (form.website_url && form.website_url.value) ||
+      (form.hp_fullname && form.hp_fullname.value) ||
+      (form.hp_website && form.hp_website.value)
+    ) {
       console.warn('[Form] Honeypot triggered — silent success');
       form.style.display = 'none';
       successMsg.classList.add('show');
@@ -6522,12 +6558,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       successMsg.classList.add('show');
 
       // Track conversion to GTM → GA4 (fires only on successful webhook response)
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'form_submit',
-        form_id: 'lead-form',
-        form_country: data.country || 'unknown'
-      });
+      // Dual-dispatch via __linndaTrack (dataLayer + gtag if present)
+      if (typeof window.__linndaTrack === 'function') {
+        window.__linndaTrack('form_submit', {
+          form_id: 'lead-form',
+          form_country: data.country || 'unknown'
+        });
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'form_submit',
+          form_id: 'lead-form',
+          form_country: data.country || 'unknown'
+        });
+      }
 
       // Mark partial-lead tracker as complete so n8n closes the record
       if (typeof window.linndaMarkLeadComplete === 'function') {
@@ -6683,98 +6727,206 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   // =========================================================
-  // DATALAYER EVENTS · GTM Container: GTM-MKNPRCRF
-  // Cowork (Claude browser) configured the GTM container on 2026-04-21.
-  // These 5 blocks emit the custom events that GTM triggers listen for.
-  // Note: form_submit is dispatched from the form success handler above
-  // (NOT from a generic submit delegate — we only track SUCCESSFUL submits).
+  // GA4 INTERMEDIATE EVENTS · full funnel instrumentation
+  // GTM Container: GTM-MKNPRCRF · configured by Cowork 2026-04-21
+  //
+  // Events emitted:
+  //   1. cta_click              — any [data-cta] click (excl. WhatsApp)
+  //   2. whatsapp_click         — WhatsApp links (autodetected by URL)
+  //   3. scroll_depth           — 25 / 50 / 75 / 90 %
+  //   4. form_start             — first focus on any non-honeypot field
+  //   5. form_field_completed   — blur with valid value · drop-off analysis
+  //   6. partial_lead_captured  — valid email entered but not submitted
+  //   7. faq_open               — <details> expansion
+  //   8. privacy_policy_opened  — engagement + compliance evidence
+  //   9. consent_granted/denied — Consent Mode v2 state changes
+  //  10. form_submit            — fired from the success handler above (only on 2xx)
+  //
+  // Dual dispatch: dataLayer (GTM) + gtag (direct GA4) when available.
   // =========================================================
 
-  // 1) cta_click — any element with [data-cta] (excluding WhatsApp links)
+  // Dual dispatcher · pushes to both dataLayer and gtag
+  function __linndaTrack(eventName, params) {
+    params = params || {};
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: eventName }, params));
+    } catch (e) {}
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params);
+      }
+    } catch (e) {}
+  }
+  // Expose globally so other snippets (e.g. form success handler) can use it
+  window.__linndaTrack = __linndaTrack;
+
+  function __linndaInferLocation(el) {
+    if (el.closest('nav, header')) return 'nav';
+    if (el.closest('footer')) return 'footer';
+    if (el.closest('.hero, #hero')) return 'hero';
+    if (el.closest('.sticky-mobile-cta, [data-section=sticky]')) return 'sticky';
+    if (el.closest('#precios, [data-section=pricing]')) return 'pricing';
+    if (el.closest('#faq, [data-section=faq]')) return 'faq';
+    if (el.closest('#aplicar, [data-section=apply]')) return 'apply';
+    return 'body';
+  }
+
+  // 1) cta_click · 2) whatsapp_click · combined delegate
   document.addEventListener('click', function (e) {
-    var el = e.target.closest('[data-cta]');
+    var el = e.target.closest('a, button');
     if (!el) return;
     var href = el.getAttribute('href') || '';
-    // Skip WhatsApp links — handled by whatsapp_click below
-    if (href.indexOf('wa.me') > -1 || href.indexOf('api.whatsapp.com') > -1) return;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'cta_click',
-      cta_label: el.getAttribute('data-cta') || el.innerText.trim().slice(0, 80),
-      cta_location: el.getAttribute('data-cta-location') || 'unknown',
-      event_category: 'engagement'
-    });
+    var isWA = /wa\.me|whatsapp\.com/i.test(href);
+    var location = el.getAttribute('data-cta-location') || __linndaInferLocation(el);
+
+    if (isWA) {
+      __linndaTrack('whatsapp_click', {
+        cta_label: el.getAttribute('data-cta') || 'WhatsApp',
+        cta_location: location,
+        link_url: href,
+        link_text: (el.textContent || '').trim().slice(0, 80)
+      });
+      return;
+    }
+
+    var label = el.getAttribute('data-cta');
+    if (label) {
+      __linndaTrack('cta_click', {
+        cta_label: label,
+        cta_location: location,
+        link_url: href || null,
+        event_category: 'engagement'
+      });
+    }
   });
 
-  // 2) whatsapp_click — floating button + all WA links
-  document.addEventListener('click', function (e) {
-    var el = e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], [data-whatsapp]');
-    if (!el) return;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'whatsapp_click',
-      cta_label: el.getAttribute('data-cta') || 'WhatsApp',
-      cta_location: el.getAttribute('data-cta-location') || 'floating'
-    });
-  });
-
-  // 3) scroll_depth — fires at 25 / 50 / 75 / 90 % (once each)
+  // 3) scroll_depth
   (function () {
     var fired = {};
     var thresholds = [25, 50, 75, 90];
-    function onScroll() {
+    window.addEventListener('scroll', function () {
       var doc = document.documentElement;
       var scrolled = (window.scrollY + window.innerHeight) / doc.scrollHeight * 100;
       thresholds.forEach(function (t) {
         if (!fired[t] && scrolled >= t) {
           fired[t] = true;
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'scroll_depth', scroll_percent: t });
+          __linndaTrack('scroll_depth', { scroll_percent: t });
         }
       });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
+    }, { passive: true });
   })();
 
-  // 4) form_start — first focus on any form field
+  // 4) form_start · first focus on a real field (ignore honeypots + consent checkbox)
   (function () {
     var started = {};
     document.addEventListener('focusin', function (e) {
       var field = e.target.closest('input, textarea, select');
       if (!field) return;
+      if (field.hasAttribute('data-honeypot') || field.classList.contains('form-honey')) return;
+      if (field.id === 'consent-checkbox') return;
       var form = field.closest('form');
       if (!form) return;
-      var formId = form.id || form.getAttribute('data-form-id') || 'lead-form';
+      var formId = form.id || 'lead-form';
       if (started[formId]) return;
       started[formId] = true;
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'form_start',
+      __linndaTrack('form_start', {
         form_id: formId,
         form_field: field.name || field.id || ''
       });
     });
   })();
 
-  // 5) partial_lead_captured — user filled valid email but did NOT submit yet
+  // 5) form_field_completed · blur with a valid value (drop-off analysis)
+  (function () {
+    var form = document.querySelector('#lead-form');
+    if (!form) return;
+    var fields = form.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=submit]), select, textarea');
+    fields.forEach(function (el) {
+      // Skip honeypots
+      if (el.hasAttribute('data-honeypot') || el.classList.contains('form-honey')) return;
+      var name = el.name || el.id || 'unknown';
+      el.addEventListener('blur', function () {
+        var val = (el.value || '').trim();
+        if (!val) return;
+        if (typeof el.checkValidity === 'function' && !el.checkValidity()) return;
+        __linndaTrack('form_field_completed', {
+          field_name: name,
+          field_type: el.type || el.tagName.toLowerCase(),
+          form_id: form.id || 'lead-form'
+        });
+      });
+    });
+  })();
+
+  // 6) partial_lead_captured · valid email blurred without submit
   (function () {
     var captured = {};
     document.addEventListener('blur', function (e) {
       var field = e.target;
       if (!field || (field.type !== 'email' && !/email/i.test(field.name || ''))) return;
+      if (field.hasAttribute && (field.hasAttribute('data-honeypot') || field.classList.contains('form-honey'))) return;
       var form = field.closest('form');
       if (!form) return;
-      var formId = form.id || form.getAttribute('data-form-id') || 'lead-form';
+      var formId = form.id || 'lead-form';
       if (captured[formId]) return;
       if (!field.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(field.value)) return;
       captured[formId] = true;
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'partial_lead_captured',
+      __linndaTrack('partial_lead_captured', {
         form_id: formId,
         form_field: field.name || 'email'
       });
     }, true);
+  })();
+
+  // 7) faq_open · <details> expansion
+  document.querySelectorAll('details').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      var q = d.querySelector('summary');
+      __linndaTrack('faq_open', {
+        question_id: d.id || (q && q.textContent || '').trim().slice(0, 80),
+        question_text: (q && q.textContent || '').trim().slice(0, 160)
+      });
+    });
+  });
+
+  // 8) privacy_policy_opened · any link to the policy page
+  document.querySelectorAll('a[href="/privacidad.html"], a[href$="privacidad.html"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      __linndaTrack('privacy_policy_opened', {
+        cta_location: __linndaInferLocation(a),
+        link_url: a.href
+      });
+    });
+  });
+
+  // 9) consent_granted / consent_denied + Consent Mode v2 update
+  (function () {
+    var cb = document.getElementById('consent-checkbox');
+    if (!cb) return;
+
+    function applyConsent(granted, isInitial) {
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('consent', 'update', {
+            analytics_storage:  granted ? 'granted' : 'denied',
+            ad_storage:         granted ? 'granted' : 'denied',
+            ad_user_data:       granted ? 'granted' : 'denied',
+            ad_personalization: granted ? 'granted' : 'denied'
+          });
+        }
+      } catch (e) {}
+      __linndaTrack(granted ? 'consent_granted' : 'consent_denied', {
+        consent_version: cb.getAttribute('data-consent-version') || 'v1.0',
+        consent_ts: new Date().toISOString(),
+        initial_load: !!isInitial
+      });
+    }
+
+    // If the checkbox is already checked at load (browser autofill), honor it
+    if (cb.checked) applyConsent(true, true);
+    cb.addEventListener('change', function () { applyConsent(cb.checked, false); });
   })();
 </script>
 
