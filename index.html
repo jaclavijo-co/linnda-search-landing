@@ -470,6 +470,115 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* =========================================================
      LINNDA BRAND STRIP (top ribbon — heredancia de marca)
      ========================================================= */
+  /* =========================================================
+     URGENCY TOP BAR · Founding 20 countdown · dismissible
+     ========================================================= */
+  .urgency-bar {
+    position: relative;
+    z-index: 55;
+    background: linear-gradient(90deg,
+      rgba(245, 158, 11, 0.18) 0%,
+      rgba(245, 158, 11, 0.28) 50%,
+      rgba(245, 158, 11, 0.18) 100%);
+    border-bottom: 1px solid rgba(245, 158, 11, 0.4);
+    overflow: hidden;
+    max-height: 200px;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+  }
+  .urgency-bar.is-hidden {
+    max-height: 0;
+    opacity: 0;
+    border-bottom-color: transparent;
+  }
+  .urgency-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 9px 44px 9px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #fde68a;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .urgency-bar-inner { padding: 10px 48px 10px 20px; font-size: 14px; gap: 14px; }
+  }
+  .urgency-bar-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    animation: urgency-pulse 2s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes urgency-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+  }
+  .urgency-bar-text {
+    color: #fde68a;
+  }
+  .urgency-bar-text strong {
+    color: #fef3c7;
+    font-weight: 700;
+  }
+  .urgency-bar-text #urgency-bar-remaining,
+  .urgency-bar-text #urgency-bar-days {
+    font-weight: 700;
+    color: #fef3c7;
+    font-variant-numeric: tabular-nums;
+  }
+  /* Desktop-only context bits (hidden on mobile to keep it compact) */
+  .urgency-bar-desktop { display: none; }
+  @media (min-width: 640px) {
+    .urgency-bar-desktop { display: inline; }
+  }
+  .urgency-bar-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    background: #f59e0b;
+    color: #111827;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @media (min-width: 768px) {
+    .urgency-bar-cta { padding: 5px 14px; font-size: 13px; }
+  }
+  .urgency-bar-cta:hover {
+    background: #fbbf24;
+    transform: translateY(-1px);
+  }
+  .urgency-bar-close {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #fde68a;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    font-family: inherit;
+  }
+  .urgency-bar-close:hover { opacity: 1; }
+
   .brand-strip {
     background: var(--bg-2);
     border-bottom: 1px solid var(--border);
@@ -4303,6 +4412,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- URGENCY TOP BAR · Founding 20 countdown · dismissible -->
+<div class="urgency-bar" id="urgency-bar">
+  <div class="urgency-bar-inner">
+    <span class="urgency-bar-pulse"></span>
+    <span class="urgency-bar-text">
+      <strong>Founding 20 ·</strong>
+      <span class="urgency-bar-desktop">Piloto exclusivo ·</span>
+      <span id="urgency-bar-remaining">7</span> cupos restantes
+      <span class="urgency-bar-desktop">· Cierra 30 abril (<span id="urgency-bar-days">--</span> días)</span>
+    </span>
+    <a href="#aplicar" class="urgency-bar-cta"
+       data-cta="Aplicar · top urgency bar" data-cta-location="urgency-bar">
+      Aplicar <span aria-hidden="true">→</span>
+    </a>
+    <button class="urgency-bar-close" id="urgency-bar-close" aria-label="Cerrar banner">×</button>
+  </div>
+</div>
+
 <!-- Brand strip (herencia Linnda) -->
 <div class="brand-strip">
   <span class="dot"></span>
@@ -6263,7 +6390,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   setInterval(updateCountdown, 1000);
 
   // =========================================================
-  // STICKY URGENCY TOAST (post-scroll)
+  // URGENCY TOP BAR · always visible at load · dismissible
+  // =========================================================
+  const urgencyBar = document.getElementById('urgency-bar');
+  const urgencyBarRemaining = document.getElementById('urgency-bar-remaining');
+  const urgencyBarDays = document.getElementById('urgency-bar-days');
+
+  function updateUrgencyBar() {
+    const remaining = CONFIG.FOUNDING_TOTAL - CONFIG.FOUNDING_TAKEN;
+    if (urgencyBarRemaining) urgencyBarRemaining.textContent = remaining;
+
+    const now = new Date();
+    const diff = CONFIG.FOUNDING_DEADLINE - now;
+    const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
+    if (urgencyBarDays) urgencyBarDays.textContent = days;
+
+    // Auto-hide if Founding 20 is full
+    if (CONFIG.FOUNDING_TAKEN >= CONFIG.FOUNDING_TOTAL) {
+      urgencyBar?.classList.add('is-hidden');
+    }
+  }
+  updateUrgencyBar();
+  // Update every minute to keep the countdown fresh
+  setInterval(updateUrgencyBar, 60000);
+
+  // Dismiss top bar
+  document.getElementById('urgency-bar-close')?.addEventListener('click', () => {
+    urgencyBar?.classList.add('is-hidden');
+    // Track dismiss to dataLayer
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cta_click',
+      cta_label: 'Dismiss urgency bar',
+      cta_location: 'urgency-bar',
+      event_category: 'engagement'
+    });
+  });
+
+  // =========================================================
+  // STICKY URGENCY TOAST (post-scroll reinforcement)
+  // Threshold lowered 50% → 30% for wider coverage.
   // =========================================================
   const urgencyToast = document.getElementById('urgency-toast');
   const urgencyToastRemaining = document.getElementById('urgency-toast-remaining');
@@ -6282,7 +6448,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   window.addEventListener('scroll', () => {
     const scrollPct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    if (scrollPct > 50 && !toastShown && CONFIG.FOUNDING_TAKEN < CONFIG.FOUNDING_TOTAL) {
+    if (scrollPct > 30 && !toastShown && CONFIG.FOUNDING_TAKEN < CONFIG.FOUNDING_TOTAL) {
       updateUrgencyToast();
       urgencyToast?.classList.add('show');
       toastShown = true;
