@@ -5984,7 +5984,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <!-- Consentimiento explícito · requerido por Ley 1581/2012 (Col) + equivalentes LATAM -->
             <label class="form-consent" for="consent-checkbox">
-              <input type="checkbox" id="consent-checkbox" name="consent" required>
+              <input
+                type="checkbox"
+                id="consent-checkbox"
+                name="consent"
+                required
+                aria-required="true"
+                data-consent-version="v1.0"
+                data-consent-text="Acepto que Linnda me contacte sobre mi solicitud según su política de privacidad."
+              >
               <span class="form-consent-text">
                 Acepto que Linnda me contacte sobre mi solicitud según su
                 <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.
@@ -6368,32 +6376,89 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Requirement: Ley 1581/2012 (Col) + LATAM data protection laws
   // =========================================================
   const consentCheckbox = document.getElementById('consent-checkbox');
-  const PRIVACY_POLICY_VERSION = '1.0';
+  const PRIVACY_POLICY_VERSION = consentCheckbox.getAttribute('data-consent-version') || 'v1.0';
+  const CONSENT_TEXT = consentCheckbox.getAttribute('data-consent-text') || '';
   let consentTimestamp = null;
+
+  // Helper exposed globally · used by partial capture + fetch interceptor
+  // Returns null if no consent given (blocks all data to webhook)
+  function buildConsentBlock() {
+    if (!consentCheckbox.checked) return null;
+    if (!consentTimestamp) consentTimestamp = new Date().toISOString();
+    return {
+      given: true,
+      text: CONSENT_TEXT,
+      version: PRIVACY_POLICY_VERSION,
+      ts: consentTimestamp
+    };
+  }
+  window.__linndaConsent = buildConsentBlock;
+
+  // Spanish native-browser error message when user tries to submit w/o checking
+  consentCheckbox.addEventListener('invalid', function (e) {
+    e.target.setCustomValidity('Debes aceptar la política de privacidad para continuar.');
+  });
+  consentCheckbox.addEventListener('change', function (e) {
+    e.target.setCustomValidity('');
+  });
 
   function updateConsentState() {
     if (consentCheckbox.checked) {
       submitBtn.removeAttribute('disabled');
       if (!consentTimestamp) consentTimestamp = new Date().toISOString();
-      // Expose consent status globally so partial capture can read it
       window.linndaConsentStatus = {
         given: true,
         timestamp: consentTimestamp,
-        policy_version: PRIVACY_POLICY_VERSION
+        policy_version: PRIVACY_POLICY_VERSION,
+        text: CONSENT_TEXT
       };
     } else {
       submitBtn.setAttribute('disabled', 'disabled');
-      // Retain timestamp if they toggle back off then on, but flag not given NOW
       window.linndaConsentStatus = {
         given: false,
         timestamp: consentTimestamp,
-        policy_version: PRIVACY_POLICY_VERSION
+        policy_version: PRIVACY_POLICY_VERSION,
+        text: CONSENT_TEXT
       };
     }
   }
   consentCheckbox.addEventListener('change', updateConsentState);
-  // Init on load (may be pre-checked by browser autofill in some cases)
   updateConsentState();
+
+  // =========================================================
+  // DEFENSIVE FETCH INTERCEPTOR · last line of defense
+  // Blocks any POST to /webhook/partial-lead if consent not given.
+  // Adds consent block automatically even if the caller forgets.
+  // =========================================================
+  (function installFetchGuard() {
+    var nativeFetch = window.fetch;
+    window.fetch = function (url, opts) {
+      try {
+        if (typeof url === 'string' && url.indexOf('/webhook/partial-lead') !== -1 && opts && opts.body) {
+          var body = typeof opts.body === 'string' ? JSON.parse(opts.body) : opts.body;
+          var consent = buildConsentBlock();
+          if (!consent) {
+            // No consent · silently block the request with a 204 fake response
+            console.warn('[Consent Guard] partial-lead POST blocked: no consent');
+            return Promise.resolve(new Response(null, { status: 204 }));
+          }
+          // Augment payload with consent block even if caller forgot
+          body.consent = body.consent || consent;
+          opts.body = JSON.stringify(body);
+        }
+      } catch (err) { /* silent */ }
+      return nativeFetch.apply(this, arguments);
+    };
+  })();
+
+  // Extra belt: submit handler re-validates consent (defensive vs browser bugs)
+  form.addEventListener('submit', function (e) {
+    if (!consentCheckbox.checked) {
+      e.preventDefault();
+      e.stopPropagation();
+      consentCheckbox.reportValidity();
+    }
+  }, true);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -6422,9 +6487,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // Attach consent metadata (audit trail for privacy compliance)
+    // Attach consent metadata (audit trail for privacy compliance · Ley 1581/2012)
     data.consent_given = true;
     data.consent_timestamp = (window.linndaConsentStatus && window.linndaConsentStatus.timestamp) || new Date().toISOString();
+    data.consent_text = CONSENT_TEXT;
     data.privacy_policy_version = PRIVACY_POLICY_VERSION;
     // Override phone con E.164 format si iti está cargado
     if (iti && iti.isValidNumber()) {
@@ -6800,18 +6866,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     function buildPayload(status) {
       var fields = collectFields();
-      var consent = window.linndaConsentStatus || { given: false, timestamp: null, policy_version: null };
+      // Prefer the canonical consent block from window.__linndaConsent() if present
+      var canonicalConsent = (typeof window.__linndaConsent === 'function') ? window.__linndaConsent() : null;
+      var legacyConsent = window.linndaConsentStatus || { given: false, timestamp: null, policy_version: null, text: null };
+      var consent = canonicalConsent || {
+        given: legacyConsent.given,
+        timestamp: legacyConsent.timestamp,
+        policy_version: legacyConsent.policy_version,
+        text: legacyConsent.text || ''
+      };
       return {
         attempt_id: attemptId,
         status: status,
         timestamp: new Date().toISOString(),
         fields: fields,
-        // Consent audit trail (required by Ley 1581/2012 + LATAM equivalents)
-        consent: {
-          given: consent.given,
-          timestamp: consent.timestamp,
-          policy_version: consent.policy_version
-        },
+        // Consent audit trail (Ley 1581/2012 + LATAM equivalents · text of accepted policy)
+        consent: consent,
         utms: JSON.parse(utmsStored || '{}'),
         page_url: location.href,
         page_referrer: document.referrer || '',
