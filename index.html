@@ -401,6 +401,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     -webkit-text-size-adjust: 100%;
   }
 
+  html { overflow-x: hidden; }
   body {
     background: linear-gradient(180deg, #0a0a0f 0%, #0f0f1a 100%);
     background-attachment: fixed;
@@ -415,7 +416,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     padding-bottom: 72px; /* Space for mobile sticky CTA */
-    min-height: 100vh;
+    min-height: 100vh; min-height: 100dvh;
   }
 
   /* Scrollbar (match product) */
@@ -430,8 +431,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* Glass utility (matches product .glass class exactly) */
   .glass-surface {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
@@ -494,18 +495,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 9px 44px 9px 16px;
+    gap: 8px;
+    /* Reserve space for 44px tap-target close button on the right */
+    padding: 9px 48px 9px 12px;
     max-width: 1200px;
     margin: 0 auto;
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.4;
     color: #fde68a;
     position: relative;
   }
+  @media (min-width: 380px) {
+    .urgency-bar-inner { font-size: 13px; gap: 10px; padding-left: 16px; }
+  }
   @media (min-width: 768px) {
-    .urgency-bar-inner { padding: 10px 48px 10px 20px; font-size: 14px; gap: 14px; }
+    .urgency-bar-inner { padding: 10px 52px 10px 20px; font-size: 14px; gap: 14px; }
   }
   .urgency-bar-pulse {
     width: 8px;
@@ -543,16 +548,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 4px 12px;
+    padding: 4px 10px;
     background: #f59e0b;
     color: #111827;
     border-radius: 100px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 11.5px;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
     white-space: nowrap;
     flex-shrink: 0;
+    /* iOS: ensure clear tap area even in tight urgency bar */
+    min-height: 28px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  @media (min-width: 380px) {
+    .urgency-bar-cta { padding: 5px 12px; font-size: 12px; }
   }
   @media (min-width: 768px) {
     .urgency-bar-cta { padding: 5px 14px; font-size: 13px; }
@@ -563,19 +574,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .urgency-bar-close {
     position: absolute;
-    right: 12px;
+    right: 4px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
     border: none;
     color: #fde68a;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1;
     cursor: pointer;
-    padding: 4px 8px;
+    /* iOS accessibility: tap target min 44x44px */
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0.6;
     transition: opacity 0.2s;
     font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
   }
   .urgency-bar-close:hover { opacity: 1; }
 
@@ -614,8 +631,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     top: 0;
     z-index: 50;
     padding: 14px 0;
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     background: rgba(10, 10, 15, 0.5);
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s, padding 0.3s, background 0.3s;
@@ -729,8 +746,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* Secondary: glass (match product Button variant="secondary") */
   .btn-ghost {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     color: var(--text);
     border: 1px solid rgba(255, 255, 255, 0.06);
   }
@@ -1043,6 +1060,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap: 6px;
     padding: 4px 10px;
     background: rgba(0, 0, 0, 0.7);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border);
     border-radius: 100px;
@@ -1234,8 +1252,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding: 12px 16px;
     margin-bottom: 32px;
     background: rgba(10, 10, 11, 0.6);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 170, 0, 0.2);
     border-radius: var(--r-md);
   }
@@ -1647,8 +1665,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .problem-cell {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 28px 24px;
@@ -1701,8 +1719,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap: 24px;
     margin-top: 40px;
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 28px;
@@ -1880,8 +1898,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .how-step {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 28px 24px;
@@ -1979,8 +1997,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .case-card-v2 {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 28px 24px;
@@ -2190,8 +2208,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .snippet-card {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 24px 22px;
@@ -2495,8 +2513,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 48px;
     padding: 24px;
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
   }
@@ -2567,9 +2585,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-  }
+    backdrop-filter: blur(24px);
+    }
   .competitive-table {
     width: 100%;
     min-width: 720px;
@@ -2684,8 +2702,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .competitive-card {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 28px 24px;
@@ -2810,8 +2828,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     letter-spacing: 0.02em;
     padding: 16px 20px;
     background: rgba(0, 212, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border-left: 2px solid var(--accent-blue);
     border-radius: 0 12px 12px 0;
   }
@@ -2853,8 +2871,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .backed-card-featured {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 32px 28px;
@@ -3276,8 +3294,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .plan {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 28px 24px;
@@ -3527,8 +3545,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-top: 32px;
     padding: 20px 24px;
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(255, 170, 0, 0.05) 100%);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(0, 212, 255, 0.25);
     border-radius: 16px;
     display: flex;
@@ -3721,8 +3739,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .apply-card {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     padding: 28px 24px;
@@ -3796,9 +3814,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding: 12px 14px;
     color: var(--text);
     font-family: inherit;
-    font-size: 15px;
+    /* iOS Safari auto-zooms when font-size <16px on focus. 16px on mobile,
+       desktop tighter via media query below. */
+    font-size: 16px;
     transition: border-color 0.2s;
     min-height: 44px;
+  }
+  @media (min-width: 768px) {
+    .form-input, .form-select { font-size: 15px; }
   }
   .form-input:focus, .form-select:focus {
     outline: none;
@@ -4133,7 +4156,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      ========================================================= */
   .wa-float {
     position: fixed;
-    bottom: 88px;
+    bottom: calc(88px + env(safe-area-inset-bottom, 0px));
     right: 16px;
     z-index: 40;
     width: 56px;
@@ -4189,7 +4212,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      ========================================================= */
   .urgency-toast {
     position: fixed;
-    bottom: 172px; /* mobile: arriba del WA (88+56=144) con 28px gap */
+    /* Mobile: stacks above WA float which itself is shifted by safe-area */
+    bottom: calc(172px + env(safe-area-inset-bottom, 0px));
     right: 16px;
     left: 16px;
     z-index: 35;
@@ -4198,8 +4222,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap: 12px;
     padding: 14px 16px;
     background: rgba(10, 10, 11, 0.95);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 170, 0, 0.3);
     border-radius: var(--r-lg);
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 170, 0, 0.1);
@@ -4310,10 +4334,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     left: 0;
     right: 0;
     z-index: 45;
-    padding: 12px 16px;
+    /* Respect iPhone X+ home indicator with safe-area-inset-bottom */
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
     background: rgba(10, 10, 11, 0.95);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border-top: 1px solid var(--border-strong);
     display: flex;
     gap: 10px;
@@ -6312,6 +6337,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         form_id: 'lead-form',
         form_country: data.country || 'unknown'
       });
+
+      // Mark partial-lead tracker as complete so n8n closes the record
+      if (typeof window.linndaMarkLeadComplete === 'function') {
+        window.linndaMarkLeadComplete();
+      }
     } catch (err) {
       console.error('[Google Ads Linnda] Form submit error:', err);
       // Error state: ofrecer WhatsApp como fallback
@@ -6555,6 +6585,185 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }, true);
   })();
+</script>
+
+<!-- =========================================================
+     PARTIAL LEAD CAPTURE · googleads.linnda.co
+     =========================================================
+     Captura emails/phones de usuarios que empiezan el form pero no
+     lo envían (abandonment). Hace POST a n8n cada 1.5s después del
+     último cambio, y flush final en beforeunload/visibilitychange.
+
+     Integración:
+     · Solo POSTea si hay email válido O phone >= 7 dígitos
+     · Dedup server-side vía attempt_id (UUID por sesión)
+     · Mark "complete" lo disparamos MANUALMENTE desde el success
+       handler del form (línea ~6310) para evitar false positives
+       por honeypot o validación fallida.
+     ========================================================= -->
+<script>
+(function () {
+  var CONFIG = {
+    webhookUrl: 'https://mono-bautista.app.n8n.cloud/webhook/partial-lead',
+    formSelector: '#lead-form',
+    debounceMs: 1500,
+    storageKeys: {
+      attemptId: 'linnda_lead_attempt_id',
+      status: 'linnda_lead_status',
+      utms: 'linnda_utms'
+    }
+  };
+
+  function init() {
+    var form = document.querySelector(CONFIG.formSelector);
+    if (!form) return;
+
+    // 1. Identidad del intento (dedupe en n8n)
+    var attemptId = sessionStorage.getItem(CONFIG.storageKeys.attemptId);
+    if (!attemptId) {
+      attemptId = 'att_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+      sessionStorage.setItem(CONFIG.storageKeys.attemptId, attemptId);
+    }
+
+    // 2. UTMs / click IDs (first-touch)
+    var utmsStored = sessionStorage.getItem(CONFIG.storageKeys.utms);
+    if (!utmsStored) {
+      var params = new URLSearchParams(location.search);
+      var captured = {};
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach(function (k) {
+        var v = params.get(k);
+        if (v) captured[k] = v;
+      });
+      utmsStored = JSON.stringify(captured);
+      sessionStorage.setItem(CONFIG.storageKeys.utms, utmsStored);
+    }
+
+    var savedStatus = sessionStorage.getItem(CONFIG.storageKeys.status) || 'idle';
+    var debounceTimer = null;
+    var lastSerialized = null;
+    var everContactable = false;
+
+    function validEmail(v) {
+      return !!v && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+    }
+    function validPhone(v) {
+      return !!v && v.replace(/\D+/g, '').length >= 7;
+    }
+
+    function collectFields() {
+      var out = {};
+      try {
+        var data = new FormData(form);
+        data.forEach(function (v, k) {
+          if (!k) return;
+          if (typeof v === 'string' && v.trim()) out[k] = v.trim();
+        });
+      } catch (e) { /* ignore */ }
+      // intl-tel-input: if the plugin is present, prefer the internationalized E.164 number
+      try {
+        var itiInput = form.querySelector('input[type="tel"]');
+        if (itiInput && window.intlTelInput) {
+          var iti = window.intlTelInput.getInstance ? window.intlTelInput.getInstance(itiInput) : null;
+          if (iti && typeof iti.getNumber === 'function') {
+            var e164 = iti.getNumber();
+            if (e164) out.phone_e164 = e164;
+          }
+        }
+      } catch (e) { /* ignore */ }
+      return out;
+    }
+
+    function buildPayload(status) {
+      var fields = collectFields();
+      return {
+        attempt_id: attemptId,
+        status: status,
+        timestamp: new Date().toISOString(),
+        fields: fields,
+        utms: JSON.parse(utmsStored || '{}'),
+        page_url: location.href,
+        page_referrer: document.referrer || '',
+        user_agent: navigator.userAgent,
+        language: navigator.language || '',
+        screen: { w: screen.width, h: screen.height }
+      };
+    }
+
+    function isContactable(payload) {
+      var f = payload.fields || {};
+      return validEmail(f.email) || validPhone(f.phone) || validPhone(f.phone_e164);
+    }
+
+    function send(payload, useBeacon) {
+      var serialized = JSON.stringify(payload);
+      if (serialized === lastSerialized && payload.status !== 'complete') return;
+      lastSerialized = serialized;
+      try {
+        if (useBeacon && navigator.sendBeacon) {
+          var blob = new Blob([serialized], { type: 'application/json' });
+          navigator.sendBeacon(CONFIG.webhookUrl, blob);
+        } else {
+          fetch(CONFIG.webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: serialized,
+            keepalive: true,
+            mode: 'cors',
+            credentials: 'omit'
+          }).catch(function () { /* swallow */ });
+        }
+      } catch (e) { /* swallow */ }
+    }
+
+    function trySavePartial(useBeacon) {
+      if (savedStatus === 'complete') return;
+      var payload = buildPayload('partial');
+      if (!isContactable(payload)) return;
+      everContactable = true;
+      send(payload, !!useBeacon);
+    }
+
+    // 3. Listeners
+    form.addEventListener('input', function () {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function () { trySavePartial(false); }, CONFIG.debounceMs);
+    });
+    form.addEventListener('change', function () {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function () { trySavePartial(false); }, CONFIG.debounceMs);
+    });
+
+    // Safety-net flush: tab hidden, bfcache, unload
+    function flushOnHide() {
+      if (everContactable && savedStatus !== 'complete') {
+        clearTimeout(debounceTimer);
+        trySavePartial(true);
+      }
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') flushOnHide();
+    });
+    window.addEventListener('pagehide', flushOnHide);
+    window.addEventListener('beforeunload', flushOnHide);
+
+    // 4. Expose markComplete globally — llamado desde el form success
+    //    handler para evitar false positives por honeypot o validación.
+    function markComplete() {
+      if (savedStatus === 'complete') return;
+      savedStatus = 'complete';
+      sessionStorage.setItem(CONFIG.storageKeys.status, 'complete');
+      var payload = buildPayload('complete');
+      send(payload, false);
+    }
+    window.linndaMarkLeadComplete = markComplete;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 
 </body>
