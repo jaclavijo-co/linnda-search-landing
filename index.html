@@ -8,6 +8,14 @@
 <meta name="author" content="Linnda">
 <meta name="publisher" content="Linnda">
 
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKNPRCRF');</script>
+<!-- End Google Tag Manager -->
+
 <title>Google Ads Linnda — Recupera el 20% de ROAS que ya está en tu cuenta de Google Ads</title>
 <meta name="description" content="Tu próximo 20% de ROAS ya está en tu cuenta. Google Ads Linnda lo encuentra con IA, optimiza conversion goals y ejecuta cambios el mismo día vía API. Audit gratis para los primeros 20 clientes del piloto.">
 <meta name="keywords" content="subir roas google ads, reducir cac, optimizar google ads, mejor roi paid search, audit google ads latam, google ads colombia méxico, optmyzr alternativa, google ads linnda, performance marketing latam">
@@ -856,27 +864,41 @@
   .hero-meta-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    min-width: 0;
   }
   .hero-meta-value {
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 28px;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--text);
     letter-spacing: -0.02em;
     line-height: 1;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
-  @media (min-width: 768px) { .hero-meta-value { font-size: 32px; } }
-  .hero-meta-value .unit { color: var(--text-3); font-size: 0.55em; font-weight: 400; }
+  @media (min-width: 768px) { .hero-meta-value { font-size: 30px; } }
+  .hero-meta-value .unit {
+    color: var(--text-3);
+    font-size: 0.5em;
+    font-weight: 400;
+    margin-left: 2px;
+    letter-spacing: 0;
+  }
   .hero-meta-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--text-3);
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
+    line-height: 1.4;
+    max-width: 140px;
   }
-  @media (min-width: 768px) { .hero-meta-label { font-size: 11px; } }
+  @media (min-width: 768px) {
+    .hero-meta-label { font-size: 10.5px; max-width: 150px; }
+  }
 
   /* =========================================================
      HERO · VIDEO/LOOM PLACEHOLDER
@@ -1181,21 +1203,22 @@
   .founding-qualify-badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.25);
+    gap: 8px;
+    padding: 7px 14px;
+    background: rgba(0, 212, 255, 0.18);
+    border: 1px solid rgba(0, 212, 255, 0.55);
     border-radius: 100px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--accent-blue);
-    letter-spacing: 0.04em;
+    font-size: 11px;
+    color: #5ee5ff;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
+    box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.08), 0 2px 8px rgba(0, 212, 255, 0.12);
   }
   @media (min-width: 768px) {
-    .founding-qualify-badge { font-size: 11px; }
+    .founding-qualify-badge { font-size: 12px; padding: 8px 16px; }
   }
 
   /* Main banner grid */
@@ -4057,7 +4080,7 @@
      ========================================================= */
   .urgency-toast {
     position: fixed;
-    bottom: 152px;
+    bottom: 172px; /* mobile: arriba del WA (88+56=144) con 28px gap */
     right: 16px;
     left: 16px;
     z-index: 35;
@@ -4080,7 +4103,7 @@
     .urgency-toast {
       left: auto;
       right: 24px;
-      bottom: 24px;
+      bottom: 112px; /* desktop: arriba del WA (24+64=88) con 24px gap */
       max-width: 380px;
     }
   }
@@ -4275,6 +4298,11 @@
 
 <body>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKNPRCRF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <!-- Brand strip (herencia Linnda) -->
 <div class="brand-strip">
   <span class="dot"></span>
@@ -4294,7 +4322,7 @@
       <a href="#caso">Casos</a>
       <a href="#comparativa">Vs mercado</a>
       <a href="#precios">Precios</a>
-      <a href="#aplicar" class="btn btn-primary">Aplicar al piloto</a>
+      <a href="#aplicar" class="btn btn-primary" data-cta="Aplicar al piloto" data-cta-location="nav">Aplicar al piloto</a>
     </div>
   </div>
 </nav>
@@ -4343,12 +4371,12 @@
         </div>
 
         <div class="hero-ctas reveal">
-          <a href="#aplicar" class="btn btn-primary btn-lg">
+          <a href="#aplicar" class="btn btn-primary btn-lg" data-cta="Recuperar mi ROAS · Founding 20" data-cta-location="hero">
             Recuperar mi ROAS · Founding 20
             <span>→</span>
           </a>
           <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20en%20Google%20Ads%20(Founding%2020%20de%20Linnda)"
-             target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+             target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg" data-cta="Hablar por WhatsApp" data-cta-location="hero">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Hablar por WhatsApp
           </a>
@@ -4479,9 +4507,9 @@
       </div>
 
       <div class="founding-ctas">
-        <a href="#aplicar" class="btn btn-primary btn-lg">Recuperar mi ROAS · Gratis →</a>
+        <a href="#aplicar" class="btn btn-primary btn-lg" data-cta="Recuperar mi ROAS · Gratis" data-cta-location="founding-banner">Recuperar mi ROAS · Gratis →</a>
         <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20en%20Google%20Ads%20(Founding%2020%20de%20Linnda)"
-           target="_blank" rel="noopener" class="founding-wa-link">
+           target="_blank" rel="noopener" class="founding-wa-link" data-cta="WhatsApp desde Founding banner" data-cta-location="founding-banner">
           o escribir por WhatsApp ↗
         </a>
       </div>
@@ -4585,7 +4613,7 @@
           <span id="waste-pct">27%</span>
         </div>
         <div class="calc-result-cta">
-          <a href="#aplicar" class="btn btn-primary">Recuperar mi ROAS · Gratis →</a>
+          <a href="#aplicar" class="btn btn-primary" data-cta="Recuperar mi ROAS · Gratis" data-cta-location="calculator">Recuperar mi ROAS · Gratis →</a>
         </div>
       </div>
     </div>
@@ -5430,7 +5458,7 @@
           <li>Reporte PDF + dashboard Looker Studio</li>
         </ul>
 
-        <a href="#aplicar" class="btn btn-ghost">Empezar el audit</a>
+        <a href="#aplicar" class="btn btn-ghost" data-cta="Empezar el audit" data-cta-location="pricing-audit">Empezar el audit</a>
         <div class="plan-footnote">Después del Founding 20: USD $750 one-shot</div>
       </div>
 
@@ -5469,7 +5497,7 @@
           <li>Aprobación humana en todas las acciones</li>
         </ul>
 
-        <a href="#aplicar" class="btn btn-primary">Empezar a recuperar ROAS →</a>
+        <a href="#aplicar" class="btn btn-primary" data-cta="Empezar a recuperar ROAS" data-cta-location="pricing-copilot">Empezar a recuperar ROAS →</a>
         <div class="plan-footnote">Después del mes 1 gratis: USD $1,500/mes · 3 meses mín.</div>
       </div>
 
@@ -5508,7 +5536,7 @@
           <li>Audit trail completo con trazabilidad</li>
         </ul>
 
-        <a href="#aplicar" class="btn btn-ghost">Hablar con nosotros</a>
+        <a href="#aplicar" class="btn btn-ghost" data-cta="Hablar con nosotros" data-cta-location="pricing-managed">Hablar con nosotros</a>
         <div class="plan-footnote">Después del Founding 20: USD $3,000/mes</div>
       </div>
     </div>
@@ -5524,7 +5552,7 @@
           <div class="pricing-savings-sub">Audit gratis + primer mes de Copilot gratis + 42% OFF en Managed durante el piloto · Cierra el 30 de abril</div>
         </div>
       </div>
-      <a href="#aplicar" class="btn btn-primary">Recuperar mi ROAS →</a>
+      <a href="#aplicar" class="btn btn-primary" data-cta="Recuperar mi ROAS" data-cta-location="pricing-callout">Recuperar mi ROAS →</a>
     </div>
   </div>
 </section>
@@ -5724,7 +5752,7 @@
             <!-- Honeypot anti-bot: debe quedar vacío, bots lo llenan -->
             <input type="text" name="website_url" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" data-cta="Enviar aplicación" data-cta-location="form">
               Enviar aplicación
               <span>→</span>
             </button>
@@ -5738,7 +5766,7 @@
             <h3>Aplicación recibida ✓</h3>
             <p>En &lt;24h nos contactamos por email y WhatsApp. Si quieres adelantar, escribe directo.</p>
             <a href="https://wa.me/573197056803?text=Hola%2C%20acabo%20de%20aplicar%20al%20Founding%2020%20y%20quiero%20adelantar"
-               target="_blank" rel="noopener" class="btn btn-whatsapp">
+               target="_blank" rel="noopener" class="btn btn-whatsapp" data-cta="WhatsApp post-submit" data-cta-location="form-success">
               Escribir por WhatsApp →
             </a>
           </div>
@@ -5774,13 +5802,13 @@
           </div>
 
           <a href="https://wa.me/573197056803?text=Hola%2C%20quiero%20recuperar%20mi%20ROAS%20en%20Google%20Ads%20(Founding%2020%20de%20Linnda)"
-             target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top: auto;">
+             target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top: auto;" data-cta="Abrir WhatsApp · aplicar section" data-cta-location="apply-wa-card">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Abrir WhatsApp
           </a>
 
           <a href="https://calendar.app.google/ADqwyJuTePGxqZGJ6"
-             target="_blank" rel="noopener" class="apply-calendly-link">
+             target="_blank" rel="noopener" class="apply-calendly-link" data-cta="Agendar call Calendly" data-cta-location="apply-wa-card">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
               <line x1="16" y1="2" x2="16" y2="6"/>
@@ -5835,7 +5863,7 @@
         <ul>
           <li><a href="mailto:jose@linnda.co">jose@linnda.co</a></li>
           <li><a href="https://wa.me/573197056803" target="_blank" rel="noopener">+57 319 705 6803</a></li>
-          <li><a href="#aplicar">Aplicar al piloto</a></li>
+          <li><a href="#aplicar" data-cta="Aplicar al piloto · footer" data-cta-location="footer">Aplicar al piloto</a></li>
           <li style="color: var(--text-3); font-size: 13px;">Bogotá, Colombia</li>
         </ul>
       </div>
@@ -5864,23 +5892,24 @@
       <span id="urgency-toast-remaining">7</span> cupos disponibles · Quedan <span id="urgency-toast-days">--</span> días
     </div>
   </div>
-  <a href="#aplicar" class="urgency-toast-cta">Aplicar →</a>
+  <a href="#aplicar" class="urgency-toast-cta" data-cta="Aplicar · urgency toast" data-cta-location="urgency-toast">Aplicar →</a>
 </div>
 
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/573197056803?text=Hola%2C%20vi%20googleads.linnda.co%20y%20quiero%20recuperar%20mi%20ROAS"
    target="_blank" rel="noopener"
    class="wa-float"
-   aria-label="Escribir por WhatsApp">
+   aria-label="Escribir por WhatsApp"
+   data-cta="WhatsApp floating" data-cta-location="floating">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span class="wa-float-tooltip">Escribir por WhatsApp</span>
 </a>
 
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-mobile-cta">
-  <a href="#aplicar" class="btn btn-primary">Aplicar al piloto</a>
+  <a href="#aplicar" class="btn btn-primary" data-cta="Aplicar al piloto · sticky mobile" data-cta-location="sticky-mobile">Aplicar al piloto</a>
   <a href="https://wa.me/573197056803?text=Hola%2C%20vi%20googleads.linnda.co%20y%20quiero%20recuperar%20mi%20ROAS"
-     target="_blank" rel="noopener" class="btn btn-whatsapp">
+     target="_blank" rel="noopener" class="btn btn-whatsapp" data-cta="WhatsApp · sticky mobile" data-cta-location="sticky-mobile">
     <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     WhatsApp
   </a>
@@ -6149,13 +6178,13 @@
       form.style.display = 'none';
       successMsg.classList.add('show');
 
-      // Track event (si GA4 está configurado)
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          event_category: 'form',
-          event_label: data.country || 'unknown'
-        });
-      }
+      // Track conversion to GTM → GA4 (fires only on successful webhook response)
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'form_submit',
+        form_id: 'lead-form',
+        form_country: data.country || 'unknown'
+      });
     } catch (err) {
       console.error('[Google Ads Linnda] Form submit error:', err);
       // Error state: ofrecer WhatsApp como fallback
@@ -6265,6 +6294,101 @@
     e.preventDefault();
     urgencyToast?.classList.remove('show');
   });
+
+  // =========================================================
+  // DATALAYER EVENTS · GTM Container: GTM-MKNPRCRF
+  // Cowork (Claude browser) configured the GTM container on 2026-04-21.
+  // These 5 blocks emit the custom events that GTM triggers listen for.
+  // Note: form_submit is dispatched from the form success handler above
+  // (NOT from a generic submit delegate — we only track SUCCESSFUL submits).
+  // =========================================================
+
+  // 1) cta_click — any element with [data-cta] (excluding WhatsApp links)
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-cta]');
+    if (!el) return;
+    var href = el.getAttribute('href') || '';
+    // Skip WhatsApp links — handled by whatsapp_click below
+    if (href.indexOf('wa.me') > -1 || href.indexOf('api.whatsapp.com') > -1) return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cta_click',
+      cta_label: el.getAttribute('data-cta') || el.innerText.trim().slice(0, 80),
+      cta_location: el.getAttribute('data-cta-location') || 'unknown',
+      event_category: 'engagement'
+    });
+  });
+
+  // 2) whatsapp_click — floating button + all WA links
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], [data-whatsapp]');
+    if (!el) return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'whatsapp_click',
+      cta_label: el.getAttribute('data-cta') || 'WhatsApp',
+      cta_location: el.getAttribute('data-cta-location') || 'floating'
+    });
+  });
+
+  // 3) scroll_depth — fires at 25 / 50 / 75 / 90 % (once each)
+  (function () {
+    var fired = {};
+    var thresholds = [25, 50, 75, 90];
+    function onScroll() {
+      var doc = document.documentElement;
+      var scrolled = (window.scrollY + window.innerHeight) / doc.scrollHeight * 100;
+      thresholds.forEach(function (t) {
+        if (!fired[t] && scrolled >= t) {
+          fired[t] = true;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'scroll_depth', scroll_percent: t });
+        }
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // 4) form_start — first focus on any form field
+  (function () {
+    var started = {};
+    document.addEventListener('focusin', function (e) {
+      var field = e.target.closest('input, textarea, select');
+      if (!field) return;
+      var form = field.closest('form');
+      if (!form) return;
+      var formId = form.id || form.getAttribute('data-form-id') || 'lead-form';
+      if (started[formId]) return;
+      started[formId] = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'form_start',
+        form_id: formId,
+        form_field: field.name || field.id || ''
+      });
+    });
+  })();
+
+  // 5) partial_lead_captured — user filled valid email but did NOT submit yet
+  (function () {
+    var captured = {};
+    document.addEventListener('blur', function (e) {
+      var field = e.target;
+      if (!field || (field.type !== 'email' && !/email/i.test(field.name || ''))) return;
+      var form = field.closest('form');
+      if (!form) return;
+      var formId = form.id || form.getAttribute('data-form-id') || 'lead-form';
+      if (captured[formId]) return;
+      if (!field.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(field.value)) return;
+      captured[formId] = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'partial_lead_captured',
+        form_id: formId,
+        form_field: field.name || 'email'
+      });
+    }, true);
+  })();
 </script>
 
 </body>
